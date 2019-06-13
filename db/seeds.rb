@@ -11,21 +11,17 @@ Teacher.destroy_all
 Hobby.destroy_all
 Review.destroy_all
 
-emi = Student.create(name: "Emi", age: 30, email: "emi@gmail.com", profile_image: "asfa")
-mendel = Student.create(name: "Mendel", age: 23, email: "mendel@gmail.com", profile_image: "safsd")
+Student.create(name: "Emi", age: 30, email: "emi@gmail.com", profile_image: "asfa")
+Student.create(name: "Mendel", age: 23, email: "mendel@gmail.com", profile_image: "safsd")
 
-puts "creating teachers"
-henry = Teacher.create(name: "Henry", bio: "great teacher", profile_image: "afd", hobby_id: 1)
-jerry = Teacher.create(name: "Jerry", bio: "so so teacher", profile_image: "sdkjfn", hobby_id: 2)
-puts "finished teachers"
-
+Teacher.create(name: "Henry", bio: "great teacher", profile_image: "afd", hobby_id: Hobby.first.id)
+Teacher.create(name: "Jerry", bio: "so so teacher", profile_image: "sdkjfn", hobby_id: Hobby.last.id)
 
 Hobby.create(name: "Music", category: "Piano")
 Hobby.create(name: "Art", category: "Painting")
-puts "creating lessons"
-Lesson.create(location: "East Village", time: "Saturdays at 10", student_id: mendel.id, teacher_id: henry.id)
-Lesson.create(location: "Brooklyn", time: "Sundays at 5", student_id: emi.id, teacher_id: jerry.id)
-puts "finished lessons"
 
-Review.create(content: "Great teacher", rating: 3.5,  student_id: emi.id, teacher_id: henry.id)
-Review.create(content: "Awesome teacher", rating: 5,  student_id: mendel.id, teacher_id: jerry.id)
+Lesson.create(location: "East Village", time: "Saturdays at 10", student_id: Student.first.id, teacher_id: Teacher.first.id)
+Lesson.create(location: "Brooklyn", time: "Sundays at 5", student_id: Student.last.id, teacher_id: Teacher.last.id)
+
+Review.create(content: "Great teacher", rating: 3.5,  student_id: Student.first.id, teacher_id: Teacher.first.id)
+Review.create(content: "Awesome teacher", rating: 5,  student_id: Student.last.id, teacher_id: Teacher.last.id)
