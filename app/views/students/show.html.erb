@@ -1,0 +1,29 @@
+<h1><%= @student.name %></h1>
+
+<%= @student.profile_image %>
+<p>Name: <%= @student.name %></p>
+<p>Age: <%= @student.age %></p>
+<p>Email: <%= @student.email %></p>
+<p>Reviews: <% if @reviews %>
+            <ul>
+             <% @reviews.each do |review| %>
+             <li>
+                <p><%= review.teacher.profile_image %></p>
+                <p><%= review.teacher.name %></p>
+                <p><%= review.content %></p>
+            </li>
+            <% end %>
+            </ul>
+            <% else %>
+              <p>No reviews</p>
+            <% end %>
+
+<% if session[:user_id] %>
+  <%=link_to "Logout", logout_path, method: :delete %>
+  <% else %>
+<% end %>
+
+<%= link_to "Update", "#{student_path}/edit" %>
+
+
+<%= button_to "Delete", @student, method: :delete, data: {confirm: "Are you sure?"} %>

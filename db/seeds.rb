@@ -6,10 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Student.destroy_all
-Teacher.destroy_all
-Hobby.destroy_all
-Review.destroy_all
+# Student.destroy_all
+# Teacher.destroy_all
+# Lesson.destroy_all
+# Hobby.destroy_all
+# Review.destroy_all
 
 Student.create(name: "Emi", age: 30, email: "emi@gmail.com", profile_image: "asfa")
 Student.create(name: "Mendel", age: 23, email: "mendel@gmail.com", profile_image: "safsd")
@@ -23,5 +24,5 @@ Hobby.create(name: "Art", category: "Painting")
 Lesson.create(location: "East Village", time: "Saturdays at 10", student_id: Student.first.id, teacher_id: Teacher.first.id)
 Lesson.create(location: "Brooklyn", time: "Sundays at 5", student_id: Student.last.id, teacher_id: Teacher.last.id)
 
-Review.create(content: "Great teacher", rating: 3.5,  student_id: Student.first.id, teacher_id: Teacher.first.id)
-Review.create(content: "Awesome teacher", rating: 5,  student_id: Student.last.id, teacher_id: Teacher.last.id)
+Review.create(content: "Great teacher", rating: 3.5, student_id: Student.first.id, teacher_id: Teacher.first.id)
+Review.create(content: "Awesome teacher", rating: 5, student_id: Student.last.id, teacher_id: Teacher.last.id)
