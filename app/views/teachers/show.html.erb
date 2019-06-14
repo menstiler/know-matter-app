@@ -1,0 +1,25 @@
+<h1><%= @teacher.name %>'s Profile Page</h1>
+
+<img src="<%=@teacher.profile_image%>" alt="Profile Photo">
+
+
+<h3><%= @teacher.hobby.name %></h3>
+<h4><%= @teacher.hobby.category %></h4>
+
+<h4>Bio:</h4>
+<%= @teacher.bio %>
+
+
+<h3>Reviews:</h3>
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      Student: <%= review.student.name %>
+      <img src="<%= review.student.profile_image%>" alt=""><br>
+      Rating: <%= review.rating %><br>
+      Content: <%= review.content %><br>
+    </li>
+  <% end %>
+</ul>
+
+<%= button_to "Main Page", {:action => "index"}, :method => :get %>

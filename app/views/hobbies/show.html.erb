@@ -1,0 +1,11 @@
+<h1><%= @hobby.name %>: <%= @hobby.category %></h1>
+
+<ul>
+  <% @teachers.each do |teacher| %>
+    <li>
+      <a href=""><img src="<%=teacher.profile_image%>" alt="Profile Image"><br></a>
+      <%= teacher.name %><br>
+      <%= teacher.bio %>
+    </li>
+  <% end %>
+</ul>

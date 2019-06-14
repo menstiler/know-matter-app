@@ -1,0 +1,42 @@
+
+<h1>Hobbies</h1>
+
+
+MUSIC
+<ul>
+  <% @music_hobbies.each do |hobby| %>
+  <li>
+    <%= link_to hobby.category, hobby_path(hobby) %>
+  </li>
+  <% end %>
+</ul>
+
+
+ART
+<ul>
+  <% @art_hobbies.each do |hobby| %>
+  <li>
+    <%= link_to hobby.category, hobby_path(hobby) %>
+  </li>
+  <% end %>
+</ul>
+
+TECHNOLOGY
+<ul>
+  <% @tech_hobbies.each do |hobby| %>
+  <li>
+    <%= link_to hobby.category, hobby_path(hobby) %>
+  </li>
+  <% end %>
+</ul>
+
+LANGUAGE
+<ul>
+  <% @language_hobbies.each do |hobby| %>
+  <li>
+    <%= link_to hobby.category, hobby_path(hobby) %>
+  </li>
+  <% end %>
+</ul>
+
+RECOMMENDATIONS FOR USER:
