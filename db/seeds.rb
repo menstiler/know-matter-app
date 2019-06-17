@@ -22,9 +22,9 @@ Timeslot.create(timeslot: "Sundays at 5")
 Booking.create(status: "available", timeslot_id: 1, teacher_id: 1)
 Booking.create(status: "available", timeslot_id: 2, teacher_id: 2)
 
-#
-# Lesson.create(location: "East Village", time: "Saturdays at 10", student_id: Student.first.id, teacher_id: Teacher.first.id)
-# Lesson.create(location: "Brooklyn", time: "Sundays at 5", student_id: Student.last.id, teacher_id: Teacher.last.id)
+
+Lesson.create(location: "East Village", time: "Saturdays at 10", student_id: Student.first.id, teacher_id: Teacher.first.id)
+Lesson.create(location: "Brooklyn", time: "Sundays at 5", student_id: Student.last.id, teacher_id: Teacher.last.id)
 
 Review.create(content: "Great teacher", rating: 3,  student_id: Student.first.id, teacher_id: Teacher.first.id)
 Review.create(content: "Awesome teacher", rating: 5,  student_id: Student.last.id, teacher_id: Teacher.last.id)
