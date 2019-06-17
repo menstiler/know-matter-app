@@ -6,13 +6,18 @@ class LessonsController < ApplicationController
   end
 
   def create_new_lesson
-
     @lesson = Lesson.create(lesson_params)
-    byebug
   end
 
+  def cancel_lesson
+    @lesson = Lesson.find(params[:id])
+    @student = Student.find(@lesson.student.id)
+    @lesson.destroy
+    redirect_to your_lessons_path(@student)
+  end
 
   private
+
   def lesson_params
     params.require(:lesson).permit(:time, :location, :teacher_id, :student_id)
   end

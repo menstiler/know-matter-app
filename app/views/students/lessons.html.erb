@@ -1,0 +1,11 @@
+<ul>
+<% @lessons.each do |lesson| %>
+<li>
+   <p><%= lesson.teacher.hobby.category %></p>
+   <p><%= lesson.teacher.name %></p>
+   <p><%= lesson.location %></p>
+   <p><%= lesson.time %></p>
+   <%= button_to "Delete", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+</li>
+<% end %>
+</ul>

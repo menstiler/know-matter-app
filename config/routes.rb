@@ -3,10 +3,14 @@ Rails.application.routes.draw do
   get '/book/:id' => "lessons#book"
   post '/lessons' => "lessons#create_new_lesson"
   get '/lessons' => "lessons#index"
+  delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
 
   resources :teachers, only: [:index, :show]
   resources :hobbies, only: [:index, :show]
   resources :students
+
+  get 'students/:id/lessons' => "students#lessons", as: "your_lessons"
+
   get '/' => "sessions#new", as: "login"
   post '/' => "sessions#create"
   delete '/logout' => "sessions#destroy", as: "logout"

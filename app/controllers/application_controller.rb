@@ -3,10 +3,7 @@ class ApplicationController < ActionController::Base
   # helper_method :authorized?
 
   def current_user
-    if session[:user_id]
-      @student = Student.find(session[:user_id])
-
-    end
+    @student = Student.find(session[:user_id])
   end
 
   def signed_in?

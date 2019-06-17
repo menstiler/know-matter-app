@@ -18,6 +18,11 @@
               <p>No reviews</p>
             <% end %>
 
+
+<% unless @lessons.empty? %>
+  <%=link_to "Your Lessons", your_lessons_path %>
+<% end %>
+
 <% if session[:user_id] %>
   <%=link_to "Logout", logout_path, method: :delete %>
   <% else %>
