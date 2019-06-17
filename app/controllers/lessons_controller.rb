@@ -7,6 +7,11 @@ class LessonsController < ApplicationController
 
   def create_new_lesson
     @lesson = Lesson.create(lesson_params)
+    redirect_to thank_you_path
+  end
+
+  def thank_you
+    @student = Student.find(session[:user_id])
   end
 
   def cancel_lesson
