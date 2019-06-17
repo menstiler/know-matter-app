@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+  before_action :authorized
 
   def index
     @teachers = Teacher.all

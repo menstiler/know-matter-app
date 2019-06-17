@@ -1,13 +1,22 @@
 <h1><%= @teacher.name %>'s Profile Page</h1>
 
-<img src="<%=@teacher.profile_image%>" alt="Profile Photo">
+<img src="<%=@teacher.profile_image%>" style="width:300px" alt="Profile Photo">
 
 
 <h3><%= @teacher.hobby.name %></h3>
 <h4><%= @teacher.hobby.category %></h4>
 
-<h4>Bio:</h4>
+<h3>Bio:</h3>
 <%= @teacher.bio %>
+
+<h3>Rates:</h3>
+$<%= @teacher.rates %>/hour
+
+<h3>Available Timeslots</h3>
+
+<%= link_to "Book a Lesson", "/book/#{@teacher.id}" %>
+
+
 
 
 <h3>Reviews:</h3>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LearnSpaceApp</title>
+    <title>KnowMatterApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li><a href="/welcome">Home</a></li>
+        <li><a href="/hobbies">Browse</a></li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

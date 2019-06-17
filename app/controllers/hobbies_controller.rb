@@ -1,4 +1,5 @@
 class HobbiesController < ApplicationController
+  before_action :authorized
 
   def index
     @music_hobbies = Hobby.select_categories("Music")

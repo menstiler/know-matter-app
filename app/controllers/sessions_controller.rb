@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     else
       user = Student.find_by(name: params[:user])
       session[:user_id] = user.id
-      redirect_to user
+      redirect_to welcome_path
     end
   end
 
