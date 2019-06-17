@@ -1,4 +1,10 @@
-<h1>All Teachers for <%= @category %></h1>
+<h1>All Classes for <%= @category %></h1>
+
+<%= form_tag("/hobbies/show/#{@category}", method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 
 <% @hobbies.each do |hobby| %>
 <div class="card">

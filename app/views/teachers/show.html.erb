@@ -23,6 +23,7 @@ $<%= @teacher.rates %>/hour
 
 <h3>Book Lesson</h3>
 
+<% if !@timeslots.empty? %>
 <%= form_for @lesson do |f| %>
   <%= f.select :time, @timeslots %>
   <%= f.hidden_field :location, value: "#{@teacher.location}"%>
@@ -30,7 +31,9 @@ $<%= @teacher.rates %>/hour
   <%= f.hidden_field :student_id, value: "#{@student.id}" %>
   <%= f.submit "Book" %>
 <% end %>
-
+<% else %>
+  <p>Currently no available bookings</p>
+<% end %>
 
 <h3>Reviews:</h3>
 <% unless @reviews.empty? %>
