@@ -1,11 +1,12 @@
 <ul>
 <% @lessons.each do |lesson| %>
 <li>
-   <p><%= lesson.teacher.hobby.category %></p>
-   <p><%= lesson.teacher.name %></p>
-   <p><%= lesson.location %></p>
-   <p><%= lesson.time %></p>
-   <%= button_to "Delete", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+   <p><strong>Category:</strong> <%= lesson.teacher.hobby.category %></p>
+   <p><strong>Teacher:</strong>  <%=link_to lesson.teacher.name, teacher_path(lesson.teacher.id)  %></p>
+   <p><strong>Location:</strong>  <%= lesson.location %></p>
+   <p><strong>Time:</strong>  <%= lesson.time %></p>
+   <%= button_to "Cancel", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+   <%= button_to "Book another lesson with #{lesson.teacher.name}", book_lesson_path(lesson.teacher.id), method: :get %>
 </li>
 <% end %>
 </ul>

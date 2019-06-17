@@ -9,6 +9,7 @@ class StudentsController < ApplicationController
   def show
     @reviews = @student.reviews
     @lessons = @student.lessons
+    session[:original_uri] = request.url 
   end
 
   def new
@@ -37,6 +38,8 @@ class StudentsController < ApplicationController
   def lessons
     @lessons = @student.lessons
   end
+
+
 
 
   private

@@ -1,16 +1,23 @@
+<% if flash[:message] %>
+<h1><%= flash[:message] %></h1>
+<% end %>
+
 <h1><%= @student.name %></h1>
 
-<%= @student.profile_image %>
+<img src="<%= @student.profile_image %>" alt="profile_image">
 <p>Name: <%= @student.name %></p>
 <p>Age: <%= @student.age %></p>
 <p>Email: <%= @student.email %></p>
-<p>Reviews: <% if @reviews %>
+<p>Reviews: <% unless @reviews.empty? %>
             <ul>
              <% @reviews.each do |review| %>
              <li>
-                <p><%= review.teacher.profile_image %></p>
-                <p><%= review.teacher.name %></p>
-                <p><%= review.content %></p>
+                <p><img src="<%= review.teacher.profile_image %>" alt="profile_image"></p>
+                <p><strong>Teacher:</strong> <%= review.teacher.name %></p>
+                <p><strong>Content:</strong> <%= review.content %></p>
+                <p><strong>Rating:</strong> <%= review.rating %></p>
+                <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
+                <%= button_to "Edit", edit_review_path(review), method: :get %>
             </li>
             <% end %>
             </ul>

@@ -1,7 +1,11 @@
+<% if flash[:message] %>
+<h1><%= flash[:message] %></h1>
+<% end %>
+
 <h1><%= @teacher.name %>'s Profile Page</h1>
 
-<img src="<%=@teacher.profile_image%>" style="width:300px" alt="Profile Photo">
 
+<img src="<%=@teacher.profile_image%>" style="width:300px" alt="Profile Photo">
 
 <h3><%= @teacher.hobby.name %></h3>
 <h4><%= @teacher.hobby.subclass %></h4>
@@ -29,15 +33,25 @@ $<%= @teacher.rates %>/hour
 
 
 <h3>Reviews:</h3>
+<% unless @reviews.empty? %>
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      Student: <%= review.student.name %>
       <img src="<%= review.student.profile_image%>" alt=""><br>
+      Student: <%= review.student.name %><br>
       Rating: <%= review.rating %><br>
       Content: <%= review.content %><br>
+      <% if session[:user_id] == review.student.id %>
+      <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= button_to "Edit", edit_review_path(review), method: :get %>
+      <% end %>
     </li>
   <% end %>
 </ul>
+  <% else %>
+    <p>No reviews</p>
+  <% end %>
+
+<%= button_to "Add Review", new_review_path(@teacher), :method => :get %>
 
 <%= button_to "Main Page", {:action => "index"}, :method => :get %>
