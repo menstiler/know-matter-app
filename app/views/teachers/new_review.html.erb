@@ -1,0 +1,10 @@
+<%= form_for @review do |f| %>
+  <%= f.label "content: " %>
+  <%= f.text_field "content" %>
+  <%= f.label "Rating: " %>
+  <%= f.number_field "rating", max: 5, min: 1 %>
+  <%= f.hidden_field :teacher_id, value: "#{@teacher.id}"%>
+  <%= f.hidden_field :student_id, value: "#{@student.id}" %>
+  <%= f.submit "Add Review" %>
+
+<% end %>

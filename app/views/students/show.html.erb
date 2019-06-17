@@ -4,13 +4,14 @@
 <p>Name: <%= @student.name %></p>
 <p>Age: <%= @student.age %></p>
 <p>Email: <%= @student.email %></p>
-<p>Reviews: <% if @reviews %>
+<p>Reviews: <% unless @reviews.empty? %>
             <ul>
              <% @reviews.each do |review| %>
              <li>
                 <p><%= review.teacher.profile_image %></p>
                 <p><%= review.teacher.name %></p>
                 <p><%= review.content %></p>
+                <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
             </li>
             <% end %>
             </ul>

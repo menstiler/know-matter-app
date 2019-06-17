@@ -38,6 +38,13 @@ class StudentsController < ApplicationController
     @lessons = @student.lessons
   end
 
+  def delete_review
+    @review = Review.find(params[:id])
+    @student = Student.find(@review.student.id)
+    @review.destroy
+    redirect_to student_path(@student)
+  end
+
 
   private
 
