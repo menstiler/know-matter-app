@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/book/:id' => "lessons#book"
   post '/lessons' => "lessons#create_new_lesson"
   get '/lessons' => "lessons#index"
+  get '/thank_you' => "lessons#thank_you", as: "thank_you"
 
   resources :teachers, only: [:index, :show]
   resources :hobbies, only: [:index, :show]

@@ -3,6 +3,9 @@ class Teacher < ApplicationRecord
   has_many :reviews
   has_many :lessons
   has_many :students, through: :lessons
+  has_many :bookings
+  has_many :timeslots, through: :bookings 
+
 
 
   def self.find_teacher_by_category(category)

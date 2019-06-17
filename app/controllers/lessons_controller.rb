@@ -6,11 +6,13 @@ class LessonsController < ApplicationController
   end
 
   def create_new_lesson
-
     @lesson = Lesson.create(lesson_params)
-    byebug
+    redirect_to thank_you_path
   end
 
+  def thank_you
+    @student = Student.find(session[:user_id])
+  end
 
   private
   def lesson_params
