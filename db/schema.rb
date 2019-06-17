@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_13_212952) do
+ActiveRecord::Schema.define(version: 2019_06_16_205841) do
 
   create_table "hobbies", force: :cascade do |t|
     t.string "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_06_13_212952) do
     t.integer "hobby_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rates"
     t.index ["hobby_id"], name: "index_teachers_on_hobby_id"
   end
 

@@ -1,11 +1,15 @@
-<h1><%= @hobby.name %>: <%= @hobby.category %></h1>
+<h1><%= @hobby.category %></h1>
 
+<%= button_to "Go Back to Browse", {:action => "index"}, :method => :get %>
+
+<% @teachers.each do |teacher| %>
+<div class="card">
 <ul>
-  <% @teachers.each do |teacher| %>
-    <li>
-      <a href=""><img src="<%=teacher.profile_image%>" alt="Profile Image"><br></a>
-      <%= teacher.name %><br>
-      <%= teacher.bio %>
-    </li>
-  <% end %>
+      <a href="<%=teacher_path(teacher)%>"><img src="<%=teacher.profile_image%>" alt="Profile Image" style="width:90%"><br></a>
+      <div class ="container">
+      <h4><%= teacher.name %></h4>
+      <p><%= teacher.bio %></p>
+      </div>
 </ul>
+</div>
+<% end %>
