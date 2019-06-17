@@ -2,26 +2,17 @@
 <h1>Hobbies</h1>
 
 
-MUSIC
+CREATIVE
 <ul>
-  <% @music_hobbies.each do |hobby| %>
+  <% @creative_hobbies.each do |hobby| %>
   <li>
-    <%= link_to hobby.category, hobby_path(hobby) %>
+    <%= link_to hobby.name, hobby_path(hobby)%>
   </li>
   <% end %>
 </ul>
 
 
-ART
-<ul>
-  <% @art_hobbies.each do |hobby| %>
-  <li>
-    <%= link_to hobby.category, hobby_path(hobby) %>
-  </li>
-  <% end %>
-</ul>
-
-TECHNOLOGY
+TECH
 <ul>
   <% @tech_hobbies.each do |hobby| %>
   <li>
@@ -30,9 +21,9 @@ TECHNOLOGY
   <% end %>
 </ul>
 
-LANGUAGE
+LIFESTYLE
 <ul>
-  <% @language_hobbies.each do |hobby| %>
+  <% @lifestyle_hobbies.each do |hobby| %>
   <li>
     <%= link_to hobby.category, hobby_path(hobby) %>
   </li>

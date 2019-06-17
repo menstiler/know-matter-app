@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   get '/welcome' => "welcome#home", as: "welcome"
-  get '/book/:id' => "lessons#book", as: "book_lesson"
+
   post '/lessons' => "lessons#create_new_lesson"
   get '/lessons' => "lessons#index"
   get '/thank_you' => "lessons#thank_you", as: "thank_you"
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
+  get '/hobbies/show/:name' => "hobbies#show_by_category"
+
+  resources :teachers, only: [:index, :show, :new, :create]
+  resources :hobbies, only: [:index, :show, :new, :create]
 
   post '/reviews' => "reviews#create"
   get '/success_delete' => "reviews#success_delete", as: "success_delete"
@@ -13,10 +17,8 @@ Rails.application.routes.draw do
   get '/reviews/:id' => "reviews#new", as: "new_review"
   post '/reviews/:id' => "reviews#update"
   delete '/reviews/:id' => "reviews#destroy", as: "delete_review"
-  resources :reviews
 
-  resources :teachers, only: [:index, :show]
-  resources :hobbies, only: [:index, :show]
+  resources :reviews
   resources :students
 
   get 'students/:id/lessons' => "students#lessons", as: "your_lessons"

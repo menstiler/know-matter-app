@@ -1,0 +1,18 @@
+<h1>Create New Teacher</h1>
+
+<%= form_for @teacher do |f| %>
+  <%= f.label "Name: " %>
+  <%= f.text_field "name" %>
+  <%= f.label "Title: " %>
+  <%= f.text_field "title" %>
+  <%= f.label "Bio: " %>
+  <%= f.text_area "bio" %>
+  <%= f.label "Profile Photo: " %>
+  <%= f.text_area "profile_image" %>
+  <%= f.label "Location: " %>
+  <%= f.text_field "location" %>
+  <%= f.label "Rates: " %>
+  <%= f.number_field "rates" %>
+  <%= f.collection_select(:hobby_id, @hobbies, :id, :subclass, prompt: "Select Hobby" ) %>
+  <%= f.submit %>
+<% end %>

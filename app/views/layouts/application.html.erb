@@ -14,6 +14,9 @@
       <ul>
         <li><a href="/welcome">Home</a></li>
         <li><a href="/hobbies">Browse</a></li>
+        <% if @student %>
+        <li><a href="/students/<%= @student.id %>">My Profile</a></li>
+        <% end %>
       </ul>
     </nav>
     <%= yield %>

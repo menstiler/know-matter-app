@@ -8,17 +8,29 @@
 <img src="<%=@teacher.profile_image%>" style="width:300px" alt="Profile Photo">
 
 <h3><%= @teacher.hobby.name %></h3>
-<h4><%= @teacher.hobby.category %></h4>
+<h4><%= @teacher.hobby.subclass %></h4>
 
 <h3>Bio:</h3>
 <%= @teacher.bio %>
+
+<h3>Location:</h3>
+<%= @teacher.location %>
 
 <h3>Rates:</h3>
 $<%= @teacher.rates %>/hour
 
 <h3>Available Timeslots</h3>
 
-<%= link_to "Book a Lesson", "/book/#{@teacher.id}" %>
+<h3>Book Lesson</h3>
+
+<%= form_for @lesson do |f| %>
+  <%= f.select :time, @timeslots %>
+  <%= f.hidden_field :location, value: "#{@teacher.location}"%>
+  <%= f.hidden_field :teacher_id, value: "#{@teacher.id}"%>
+  <%= f.hidden_field :student_id, value: "#{@student.id}" %>
+  <%= f.submit "Book" %>
+<% end %>
+
 
 <h3>Reviews:</h3>
 <% unless @reviews.empty? %>

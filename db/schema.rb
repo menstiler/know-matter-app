@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 2019_06_17_151220) do
   end
 
   create_table "hobbies", force: :cascade do |t|
-    t.string "name"
     t.string "category"
+    t.string "name"
+    t.string "subclass"
+    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_151220) do
     t.text "bio"
     t.string "profile_image"
     t.integer "hobby_id"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "rates"
