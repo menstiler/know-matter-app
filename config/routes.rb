@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   get '/lessons' => "lessons#index"
   get '/thank_you' => "lessons#thank_you", as: "thank_you"
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
-  get '/reviews/:id' => "teachers#new_review", as: "new_review"
-  post '/reviews' => "teachers#create_review"
-  delete '/reviews/:id' => "students#delete_review", as: "delete_review"
 
+  post '/reviews' => "reviews#create"
+  get '/success_delete' => "reviews#success_delete", as: "success_delete"
+  get '/success_edit' => "reviews#success_edit", as: "success_edit"
+  get '/reviews/:id/edit' => "reviews#edit", as: "edit_review"
+  get '/reviews/:id' => "reviews#new", as: "new_review"
+  post '/reviews/:id' => "reviews#update"
+  delete '/reviews/:id' => "reviews#destroy", as: "delete_review"
+  resources :reviews
 
   resources :teachers, only: [:index, :show]
   resources :hobbies, only: [:index, :show]
