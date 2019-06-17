@@ -24,8 +24,7 @@
             <% else %>
               <p>No reviews</p>
             <% end %>
-
-
+<p><strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p>
 <% unless @lessons.empty? %>
   <%=link_to "Your Lessons", your_lessons_path %>
 <% end %>
