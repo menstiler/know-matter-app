@@ -4,7 +4,11 @@
 
 <h1><%= @student.name %></h1>
 
-<img src="<%= @student.profile_image %>" alt="profile_image">
+<% if @student.profile_image.attached? %>
+<img src="<%=(url_for(@student.profile_image))%>" alt="profile_image">
+<% else %>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
+<% end %>
 <p>Name: <%= @student.name %></p>
 <p>Age: <%= @student.age %></p>
 <p>Email: <%= @student.email %></p>
@@ -24,16 +28,12 @@
             <% else %>
               <p>No reviews</p>
             <% end %>
-
+<p><strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p>
 
 <% unless @lessons.empty? %>
   <%=link_to "Your Lessons", your_lessons_path %>
 <% end %>
 
-<% if session[:user_id] %>
-  <%=link_to "Logout", logout_path, method: :delete %>
-  <% else %>
-<% end %>
 
 <%= link_to "Update", "#{student_path}/edit" %>
 

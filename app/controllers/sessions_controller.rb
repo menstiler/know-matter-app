@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:user].nil? || params[:user].empty?
+    if  params[:user].empty?
       render :new
     else
       user = Student.find_by(name: params[:user])

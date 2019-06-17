@@ -17,6 +17,11 @@
         <% if @student %>
         <li><a href="/students/<%= @student.id %>">My Profile</a></li>
         <% end %>
+        <% if session[:user_id] %>
+          <li><%=link_to "Logout", logout_path, method: :delete %></li>
+        <% else %>
+        <li><%=link_to "Sign Up", new_student_path, method: :get %></li>
+        <% end %>
       </ul>
     </nav>
     <%= yield %>

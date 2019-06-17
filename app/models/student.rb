@@ -2,6 +2,7 @@ class Student < ApplicationRecord
   has_many :reviews
   has_many :lessons, dependent: :delete_all
   has_many :teachers, through: :lessons
+  has_one_attached :profile_image
 
   def my_hobbies
     hobbies = self.teachers.map do |teacher|
