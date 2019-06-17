@@ -16,10 +16,8 @@ $<%= @teacher.rates %>/hour
 
 <%= link_to "Book a Lesson", "/book/#{@teacher.id}" %>
 
-
-
-
 <h3>Reviews:</h3>
+<% unless @reviews.empty? %>
 <ul>
   <% @reviews.each do |review| %>
     <li>
@@ -29,6 +27,11 @@ $<%= @teacher.rates %>/hour
       Content: <%= review.content %><br>
     </li>
   <% end %>
+  <% else %>
+    <p>No reviews</p>
+  <% end %>
 </ul>
+
+<%= button_to "Add Review", new_review_path(@teacher), :method => :get %>
 
 <%= button_to "Main Page", {:action => "index"}, :method => :get %>
