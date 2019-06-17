@@ -26,4 +26,8 @@ class Teacher < ApplicationRecord
     end
   end
 
+  def my_available_timeslots
+    
+  end
+
 end

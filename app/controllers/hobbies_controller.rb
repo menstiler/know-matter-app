@@ -14,8 +14,15 @@ class HobbiesController < ApplicationController
   end
 
   def show_by_category
+    input = params[:search]
     @category = params[:name]
-    @hobbies = Hobby.select_categories(@category)
+    if input
+      @hobbies = Hobby.all.select do |hobby|
+        hobby.name.downcase.include?(input.downcase) || hobby.subclass.downcase.include?(input.downcase)
+      end
+    else
+      @hobbies = Hobby.select_categories(@category)
+    end
   end
 
   def new
@@ -24,5 +31,5 @@ class HobbiesController < ApplicationController
   def create
   end
 
-  
+
 end

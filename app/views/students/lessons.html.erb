@@ -6,7 +6,7 @@
    <p><strong>Location:</strong>  <%= lesson.location %></p>
    <p><strong>Time:</strong>  <%= lesson.time %></p>
    <%= button_to "Cancel", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
-   <%= button_to "Book another lesson with #{lesson.teacher.name}", book_lesson_path(lesson.teacher.id), method: :get %>
+   <%= button_to "Book another lesson with #{lesson.teacher.name}", teacher_path(lesson.teacher.id), method: :get %>
 </li>
 <% end %>
 </ul>
