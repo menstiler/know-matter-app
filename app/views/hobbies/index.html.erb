@@ -1,0 +1,31 @@
+
+<h1>Hobbies</h1>
+
+
+CREATIVE
+<ul>
+  <% @creative_hobbies.each do |hobby| %>
+  <li>
+    <%= link_to hobby.name, hobby_path(hobby)%>
+  </li>
+  <% end %>
+</ul>
+
+
+TECH
+<ul>
+  <% @tech_hobbies.each do |hobby| %>
+  <li>
+    <%= link_to hobby.category, hobby_path(hobby) %>
+  </li>
+  <% end %>
+</ul>
+
+LIFESTYLE
+<ul>
+  <% @lifestyle_hobbies.each do |hobby| %>
+  <li>
+    <%= link_to hobby.category, hobby_path(hobby) %>
+  </li>
+  <% end %>
+</ul>

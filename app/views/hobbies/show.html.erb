@@ -1,0 +1,16 @@
+<h1><%= @hobby.name %></h1>
+
+<%= button_to "Go Back to Browse", {:action => "index"}, :method => :get %>
+
+<% @teachers.each do |teacher| %>
+<div class="card">
+<ul>
+      <a href="<%=teacher_path(teacher)%>"><img src="<%=teacher.profile_image%>" alt="Profile Image" style="width:90%"><br></a>
+      <div class ="container">
+      <h4><%= teacher.name %></h4>
+      <p><%= teacher.title %> </p>
+      <p>$<%= teacher.rates %>/hour</p>
+      </div>
+</ul>
+</div>
+<% end %>

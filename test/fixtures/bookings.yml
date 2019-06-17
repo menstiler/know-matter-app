@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  teacher: one
+  timeslot: one
+
+two:
+  status: MyString
+  teacher: two
+  timeslot: two
