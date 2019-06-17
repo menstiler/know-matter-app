@@ -1,13 +1,14 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
-  before_action :authorized
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :lessons]
+  # before_action :authorized
 
   def index
     @students = Student.all
   end
 
   def show
-    @reviews = Review.all.select {|review| review.student == @student}
+    @reviews = @student.reviews
+    @lessons = @student.lessons
   end
 
   def new
@@ -33,6 +34,9 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
+  def lessons
+    @lessons = @student.lessons
+  end
 
 
   private
