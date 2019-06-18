@@ -1,4 +1,4 @@
-<h1>Create New Teacher</h1>
+<h1>Edit Teacher</h1>
 
 <%= form_for @teacher do |f| %>
   <%= f.label "Name: " %>
@@ -13,6 +13,7 @@
   <%= f.text_field "location" %>
   <%= f.label "Rates: " %>
   <%= f.number_field "rates" %>
+  <%= f.label "Teaching: " %>
   <%= f.collection_select(:hobby_id, @hobbies, :id, :subclass, prompt: "Select Hobby" ) %>
   <%= f.submit %>
 <% end %>

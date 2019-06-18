@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/welcome' => "welcome#home", as: "welcome"
+  get '/teacher_welcome' => "welcome#teacher_home", as: "teacher_welcome"
 
   post '/lessons' => "lessons#create_new_lesson"
   get '/lessons' => "lessons#index"
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
   get '/hobbies/show/:name' => "hobbies#show_by_category"
 
-  resources :teachers, only: [:index, :show, :new, :create]
+  resources :teachers
   resources :hobbies, only: [:index, :show, :new, :create]
   resources :bookings, only: [:index, :show, :new, :create]
   resources :timeslots, only: [:index, :show, :new, :create]
@@ -30,6 +31,9 @@ Rails.application.routes.draw do
   get '/' => "sessions#new", as: "login"
   post '/' => "sessions#create"
   delete '/logout' => "sessions#destroy", as: "logout"
+
+  get '/teacher_login' => "sessions#new_teacher", as: "teacher_login"
+  post '/teacher_login' => "sessions#create_teacher"
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -12,19 +12,38 @@
   <body>
     <nav>
       <ul>
+
         <!-- <li class = "logo"><%= link_to image_tag("brain_icon.png") %></li> -->
-        <li><a href="/welcome">Home</a></li>
-        <li><a href="/hobbies">Browse</a></li>
-        <% if @student %>
-        <li><a href="/students/<%= @student.id %>">My Profile</a></li>
-        <% end %>
+
         <% if session[:user_id] %>
-          <li style ="float:right; font-weight: bold"><%=link_to "Logout", logout_path, method: :delete %></li>
+          <% if session[:user_type] == "student" %>
+          <li><a href="/welcome">Home</a></li>
+          <% elsif session[:user_type] == "teacher" %>
+          <li><a href="/teacher_welcome">Home</a></li>
+          <% end %>
+
+        <% end %>
+        <li><a href="/hobbies">Browse</a></li>
+
+        <% if session[:user_id] %>
+          <% if session[:user_type] == "student" %>
+          <li><a href="/students/<%= session[:user_id] %>">My Profile</a></li>
+          <% elsif session[:user_type] == "teacher" %>
+          <li><a href="/teachers/<%= session[:user_id] %>">My Profile</a></li>
+          <% end %>
+          <li><%=link_to "Logout", logout_path, method: :delete %></li>
         <% else %>
-        <li style = "float:right; font-weight: bold"><%=link_to "Sign Up", new_student_path, method: :get %></li>
+          <li><%=link_to "Sign Up", new_student_path, method: :get %></li>
         <% end %>
       </ul>
     </nav>
     <%= yield %>
+
+    <footer>
+      <ul>
+        <li><%=link_to "Teacher Login", teacher_login_path %></li>
+        <li><%=link_to "Become a Teacher", new_teacher_path %></li>
+      </ul>
+    </footer>
   </body>
 </html>

@@ -5,6 +5,7 @@ class Teacher < ApplicationRecord
   has_many :students, through: :lessons
   has_many :bookings
   has_many :timeslots, through: :bookings
+  has_one_attached :profile_image
 
 
 
