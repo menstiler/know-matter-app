@@ -1,31 +1,19 @@
 
 <h1>Hobbies</h1>
 
+<%= form_tag("/hobbies", method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
 
-CREATIVE
+<% @hobbies.each do |hobby| %>
+<div class="card">
 <ul>
-  <% @creative_hobbies.each do |hobby| %>
-  <li>
-    <%= link_to hobby.name, hobby_path(hobby)%>
-  </li>
-  <% end %>
+      <a href="<%=hobby_path(hobby)%>"><img src="<%=hobby.image_url%>" alt="Hobby Image" style="width:90%"><br></a>
+      <div class ="container">
+      <h4><%= hobby.name %></h4>
+      <p><%= hobby.subclass %></p>
+      </div>
 </ul>
-
-
-TECH
-<ul>
-  <% @tech_hobbies.each do |hobby| %>
-  <li>
-    <%= link_to hobby.category, hobby_path(hobby) %>
-  </li>
-  <% end %>
-</ul>
-
-LIFESTYLE
-<ul>
-  <% @lifestyle_hobbies.each do |hobby| %>
-  <li>
-    <%= link_to hobby.category, hobby_path(hobby) %>
-  </li>
-  <% end %>
-</ul>
+</div>
+<% end %>

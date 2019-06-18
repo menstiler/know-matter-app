@@ -9,14 +9,33 @@ class TeachersController < ApplicationController
   def show
     @reviews = @teacher.reviews
     session[:original_uri] = request.url
-    @student = Student.find(session[:user_id])
-    @lesson = Lesson.new(teacher_id: @teacher.id, student_id: @student.id)
+    if session[:user_type] == "student"
+      @student = Student.find(session[:user_id])
+      @lesson = Lesson.new(teacher_id: @teacher.id, student_id: @student.id)
+    end
     @timeslots = @teacher.my_available_timeslots
   end
 
   def new
     @teacher = Teacher.new
-    @hobbies = Hobby.all
+  end
+
+  def create_profile
+    @hobby = Hobby.new
+    @hobby.category = params[:category]
+    @hobby.name = params[:name]
+    @hobby.subclass = params[:subclass]
+    @hobby.image_url = params[:image_url]
+
+    @hobby.save
+    @teacher = Teacher.new
+    render :new
+  end
+
+  def existing_hobby_create_profile
+    @hobby = Hobby.find(params[:id])
+    @teacher = Teacher.new
+    render :new
   end
 
   def create
@@ -40,6 +59,17 @@ class TeachersController < ApplicationController
     session[:user_id] = nil
     session[:user_path] = nil
     redirect_to teacher_login_path
+  end
+
+  def select_hobby
+    input = params[:search]
+    if input
+      @hobbies = Hobby.all.select do |hobby|
+        hobby.name.downcase.include?(input.downcase) || hobby.subclass.downcase.include?(input.downcase)
+      end
+    else
+      @hobbies = Hobby.all
+    end
   end
 
   private

@@ -13,6 +13,6 @@
   <%= f.text_field "location" %>
   <%= f.label "Rates: " %>
   <%= f.number_field "rates" %>
-  <%= f.collection_select(:hobby_id, @hobbies, :id, :subclass, prompt: "Select Hobby" ) %>
-  <%= f.submit %>
+  <%= f.hidden_field :hobby_id, value: "#{@hobby.id}" %>
+  <%= f.submit "Complete Submission" %>
 <% end %>
