@@ -1,0 +1,12 @@
+<h1>New Booking</h1>
+
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+
+<%= form_for @booking do |f| %>
+  <%= f.collection_select(:teacher_id, Teacher.all, :id, :name, prompt: true) %>
+  <%= f.collection_select(:timeslot_id, Timeslot.all, :id, :timeslot, prompt: true) %>
+  <%= f.hidden_field :status, value: "Available" %>
+  <%= f.submit %>
+<% end %>

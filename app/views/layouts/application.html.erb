@@ -4,7 +4,7 @@
     <title>KnowMatterApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" type="text/css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,12 +12,16 @@
   <body>
     <nav>
       <ul>
+
+        <!-- <li class = "logo"><%= link_to image_tag("brain_icon.png") %></li> -->
+
         <% if session[:user_id] %>
           <% if session[:user_type] == "student" %>
           <li><a href="/welcome">Home</a></li>
           <% elsif session[:user_type] == "teacher" %>
           <li><a href="/teacher_welcome">Home</a></li>
           <% end %>
+
         <% end %>
         <li><a href="/hobbies">Browse</a></li>
 

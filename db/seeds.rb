@@ -19,8 +19,8 @@ Hobby.create(category: "Lifestyle", name: "Language", subclass: "French", image_
 Teacher.create(name: "Henry", bio: "great teacher", profile_image: "https://image.flaticon.com/icons/png/512/206/206853.png", hobby_id: 1, location: "Bushwick", rates: 30, title: "Piano teacher for grades 1-6")
 Teacher.create(name: "Amy", bio: "20 years experience as an art teacher", profile_image: "https://cdn2.iconfinder.com/data/icons/office-and-business-special-set-1/260/18-512.png", hobby_id: 2, location: "East Village", rates: 40, title: "Learn how to paint in oil like a master!")
 
-Timeslot.create(timeslot: "Saturdays at 10")
-Timeslot.create(timeslot: "Sundays at 5")
+Timeslot.create(timeslot: "Saturdays: 10am - 11am", day: "Saturdays", time: "10am - 11am")
+Timeslot.create(timeslot: "Sundays: 5pm - 6pm", day: "Sundays", time: "5pm - 6pm")
 
 Booking.create(status: "available", timeslot_id: 1, teacher_id: 1)
 Booking.create(status: "available", timeslot_id: 2, teacher_id: 2)

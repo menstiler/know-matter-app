@@ -11,7 +11,7 @@ class TeachersController < ApplicationController
     session[:original_uri] = request.url
     @student = Student.find(session[:user_id])
     @lesson = Lesson.new(teacher_id: @teacher.id, student_id: @student.id)
-    @timeslots = @teacher.my_time_slots
+    @timeslots = @teacher.my_available_timeslots
   end
 
   def new

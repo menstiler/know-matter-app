@@ -38,6 +38,8 @@ $<%= @teacher.rates %>/hour
   <p>Currently no available bookings</p>
 <% end %>
 
+<%= link_to "Add Timeslot", '/timeslots/new' %>
+
 <h3>Reviews:</h3>
 <% unless @reviews.empty? %>
 <ul>

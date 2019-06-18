@@ -1,0 +1,25 @@
+
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+
+<h3>Add New Timeslot:</h3>
+<%= form_for @timeslot do |f| %>
+  <%= f.label "Days: " %>
+  <%= f.select :day, @days%>
+  <%= f.label "Time: "%>
+  <%= f.select :time, @times%>
+  <%= f.submit %>
+<% end %>
+<br>
+<h3>Or Add Timeslot to your Booking Schedule:</h3>
+<%= form_for @booking do |f| %>
+  <%= f.collection_select(:teacher_id, Teacher.all, :id, :name, prompt: true) %>
+  <%= f.collection_select(:timeslot_id, Timeslot.all, :id, :timeslot, prompt: true) %>
+  <%= f.hidden_field :status, value: "Available" %>
+  <%= f.submit %>
+<% end %>
+
+<% if flash[:message] %>
+  <%= flash[:mesage] %>
+<% end %>
