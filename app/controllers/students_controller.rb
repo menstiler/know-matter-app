@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :lessons]
-  # before_action :authorized
+  before_action :student_authorized, only: [:show, :edit, :lessons]
 
   def index
     @students = Student.all
@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   def show
     @reviews = @student.reviews
     @lessons = @student.lessons
-    session[:original_uri] = request.url 
+    session[:original_uri] = request.url
   end
 
   def new
@@ -18,7 +18,9 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.create(student_params)
-    redirect_to @student
+    session[:user_id] = @student.id
+    session[:user_type] = "student"
+    redirect_to welcome_path
   end
 
   def edit
@@ -32,15 +34,14 @@ class StudentsController < ApplicationController
 
   def destroy
     @student.destroy
-    redirect_to students_path
+    session[:user_id] = nil
+    session[:user_path] = nil
+    redirect_to login_path
   end
 
   def lessons
     @lessons = @student.lessons
   end
-
-
-
 
   private
 

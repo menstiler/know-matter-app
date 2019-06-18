@@ -1,0 +1,14 @@
+<header style="padding-left:16px">
+  <h1>Welcome <%= @teacher.name %>!</h1>
+</header>
+
+<body>
+
+  <h3>Your Lessons</h3>
+  <ul>
+    <% @teacher.lessons.each do |lesson| %>
+    <li><%= lesson.name %></li>
+    <% end %>
+  </ul>
+
+</body>
