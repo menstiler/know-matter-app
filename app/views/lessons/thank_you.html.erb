@@ -1,4 +1,4 @@
 <h1>Thank you for signing up <%= @student.name %>!<br></h1>
 
-<h4><%= link_to "View My Classes", "/students/#{@student}/lessons" %></h4>
+<h4><%= link_to "View My Classes", your_lessons_path(@student) %></h4>
 <h4><%= link_to "Back to Browse", hobbies_path %></h4>
