@@ -31,11 +31,11 @@
 <p><strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p>
 
 <% unless @lessons.empty? %>
-  <%=link_to "Your Lessons", your_lessons_path %>
+  <%=button_to "Your Lessons", your_lessons_path, method: :get %>
 <% end %>
 
 
-<%= link_to "Update", "#{student_path}/edit" %>
+<%= button_to "Edit Profile", "#{student_path}/edit", method: :get %>
 
 
-<%= button_to "Delete", @student, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= button_to "Delete Profile", @student, method: :delete, data: {confirm: "Are you sure?"} %>

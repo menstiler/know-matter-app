@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:update]
+
   def new
     @teacher = Teacher.find(params[:id])
     @student = Student.find(session[:user_id])

@@ -4,8 +4,11 @@
 
 <h1><%= @teacher.name %>'s Profile Page</h1>
 
-
-<img src="<%= @teacher.profile_image%>" style="width:300px" alt="Profile Photo">
+<% if @teacher.profile_image.attached? %>
+<img src="<%=(url_for(@teacher.profile_image))%>" alt="profile_image">
+<% else %>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
+<% end %>
 
 <h3><%= @teacher.hobby.name %></h3>
 <h4><%= @teacher.hobby.subclass %></h4>
@@ -55,6 +58,10 @@ $<%= @teacher.rates %>/hour
     <p>No reviews</p>
   <% end %>
 
+  <% if session[:user_id] == @teacher.id %>
+  <%= button_to "Edit Profile", "#{teachers_path}/#{@teacher.id}/edit", :method => :get %>
+  <%= button_to "Delete Profile", @teacher, method: :delete, data: { confirm: "Are you sure?"} %>
+  <% end %>
 <%= button_to "Add Review", new_review_path(@teacher), :method => :get %>
 
 <%= button_to "Main Page", {:action => "index"}, :method => :get %>

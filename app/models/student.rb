@@ -3,6 +3,9 @@ class Student < ApplicationRecord
   has_many :lessons, dependent: :delete_all
   has_many :teachers, through: :lessons
   has_one_attached :profile_image
+  
+  validates :name, presence: true
+  validates :name, uniqueness: true
 
   def my_hobbies
     hobbies = self.teachers.map do |teacher|
