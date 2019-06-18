@@ -1,10 +1,15 @@
 class HobbiesController < ApplicationController
-  before_action :authorized
+  before_action :authorized, except: [:new]
 
   def index
-    @creative_hobbies = Hobby.select_categories("Creative")
-    @tech_hobbies = Hobby.select_categories("Tech")
-    @lifestyle_hobbies = Hobby.select_categories("Language")
+    input = params[:search]
+    if input
+      @hobbies= Hobby.all.select do |hobby|
+        hobby.name.downcase.include?(input.downcase) || hobby.subclass.downcase.include?(input.downcase)
+      end
+    else
+      @hobbies = Hobby.all
+    end
   end
 
   def show
@@ -27,10 +32,9 @@ class HobbiesController < ApplicationController
   end
 
   def new
+    @hobby = Hobby.new
   end
 
-  def create
-  end
 
 
 end

@@ -5,7 +5,13 @@
 <% @teachers.each do |teacher| %>
 <div class="card">
 <ul>
-      <a href="<%=teacher_path(teacher)%>"><img src="<%=teacher.profile_image%>" alt="Profile Image" style="width:90%"><br></a>
+      <a href="<%=teacher_path(teacher)%>">
+        <% if teacher.profile_image.attached? %>
+        <img src="<%=(url_for(teacher.profile_image))%>" alt="profile_image">
+        <% else %>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
+        <% end %>
+      </a>
       <div class ="container">
       <h4><%= teacher.name %></h4>
       <p><%= teacher.title %> </p>

@@ -7,5 +7,6 @@ class WelcomeController < ApplicationController
 
   def teacher_home
     @teacher = Teacher.find(session[:user_id])
+    @lessons = @teacher.lessons
   end
 end

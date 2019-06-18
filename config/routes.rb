@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
   get '/hobbies/show/:name' => "hobbies#show_by_category"
 
+  get '/select_hobby' => "teachers#select_hobby", as: "select_hobby"
+  post '/teachers/create_profile' => "teachers#create_profile"
+  get '/teachers/:id/create_profile' => "teachers#existing_hobby_create_profile"
+
   resources :teachers
   resources :hobbies, only: [:index, :show, :new, :create]
   resources :bookings, only: [:index, :show, :new, :create]

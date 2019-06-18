@@ -6,9 +6,12 @@
 
   <h3>Your Lessons</h3>
   <ul>
-    <% @teacher.lessons.each do |lesson| %>
-    <li><%= lesson.name %></li>
-    <% end %>
-  </ul>
+  <% @lessons.each do |lesson| %>
+    <li>
+      <%= lesson.student.name %>
+      <%= lesson.time %>
 
+    </li>
+  <% end %>
+  </ul>
 </body>

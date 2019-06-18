@@ -64,13 +64,6 @@ div .recommendations {
   background-image: url("https://blog.intercomassets.com/wp-content/uploads/2018/03/02092036/build-a-brand_FINAL_03-%402x-1400x663.jpg")
 }
 
-/* nav {
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
-} */
-
 .circle {
   width: 100px;
   height: 100px;
@@ -117,5 +110,24 @@ nav ul li a {
 
 nav ul li a:hover {
   background-color: rgb(253, 197, 210);
-  color: #1e00ed
+}
+
+nav .logo {
+  display: inline-block;
+  width: 10px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  margin-top: 10px;
+}
+
+footer li {
+  display: block;
+  float: left;
+  padding-left: 10px;
 }

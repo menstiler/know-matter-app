@@ -1,0 +1,21 @@
+<h1>What is your Hobby?</h1>
+
+
+<%= link_to "Create New Hobby", '/hobbies/new' %><br>
+
+<%= form_tag("/select_hobby", method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% @hobbies.each do |hobby| %>
+<div class="card">
+<ul>
+      <a href="/teachers/<%=hobby.id%>/create_profile"><img src="<%=hobby.image_url%>" alt="Hobby Image" style="width:90%"><br></a>
+      <div class ="container">
+      <h4><%= hobby.name %></h4>
+      <p><%= hobby.subclass %></p>
+      </div>
+</ul>
+</div>
+<% end %>

@@ -8,6 +8,9 @@
 
 
 
+days = Date::DAYNAMES
+times = ['9am - 10am','10am - 11am','11am - 12pm','1pm - 2pm','2pm - 3pm','3pm - 4pm','4pm - 5pm','5pm - 6pm','6pm - 7pm','7pm - 8pm']
+
 Student.create(name: "Emi", age: 30, email: "emi@gmail.com")
 Student.create(name: "Mendel", age: 23, email: "mendel@gmail.com")
 
@@ -20,12 +23,14 @@ Hobby.create(category: "Lifestyle", name: "Language", subclass: "French", image_
 Teacher.create(name: "Henry", bio: "great teacher", hobby_id: 1, location: "Bushwick", rates: 30, title: "Piano teacher for grades 1-6")
 Teacher.create(name: "Amy", bio: "20 years experience as an art teacher", hobby_id: 2, location: "East Village", rates: 40, title: "Learn how to paint in oil like a master!")
 
-Timeslot.create(timeslot: "Saturdays: 10am - 11am", day: "Saturdays", time: "10am - 11am")
-Timeslot.create(timeslot: "Sundays: 5pm - 6pm", day: "Sundays", time: "5pm - 6pm")
+days.each do |day|
+  times.each do |time|
+    Timeslot.create(day: day, time: time, timeslot: "#{day}: #{time}")
+  end
+end
 
 Booking.create(status: "available", timeslot_id: 1, teacher_id: 1)
 Booking.create(status: "available", timeslot_id: 2, teacher_id: 2)
-
 
 Lesson.create(location: "East Village", time: "Saturdays at 10", student_id: Student.first.id, teacher_id: Teacher.first.id)
 Lesson.create(location: "Brooklyn", time: "Sundays at 5", student_id: Student.last.id, teacher_id: Teacher.last.id)
