@@ -1,6 +1,11 @@
+<% if flash[:message] %>
+<%= flash[:message] %>
+<% end %>
+
 <h1>Teacher Login</h1>
 
 <%= form_tag '/teacher_login' do %>
-<%= text_field_tag :user %>
+<%= label_tag "Username:" %>
+<%= text_field_tag :username %>
 <%= submit_tag "Login" %>
 <% end %>

@@ -17,10 +17,16 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student = Student.create(student_params)
-    session[:user_id] = @student.id
-    session[:user_type] = "student"
-    redirect_to welcome_path
+    @student = Student.new(student_params)
+    if @student.valid?
+      @student.save
+      session[:user_id] = @student.id
+      session[:user_type] = "student"
+      redirect_to welcome_path
+    else
+      flash.now[:message] = @student.errors.full_messages[0]
+      render :new
+    end
   end
 
   def edit
@@ -50,6 +56,6 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:name, :age, :email, :profile_image)
+    params.require(:student).permit(:username, :name, :age, :email, :profile_image)
   end
 end

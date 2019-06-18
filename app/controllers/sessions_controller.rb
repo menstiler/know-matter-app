@@ -4,13 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:user].empty?
+    input = params[:username]
+    if params[:username].empty?
       render :new
     else
-      user = Student.find_by(name: params[:user])
-      session[:user_id] = user.id
-      session[:user_type] = "student"
-      redirect_to welcome_path
+      if Student.find_by(username: params[:username])
+        user = Student.find_by(username: params[:username])
+        session[:user_id] = user.id
+        session[:user_type] = "student"
+        redirect_to welcome_path
+      else
+        flash.now[:message] = "Enter a valid username"
+        render :new
+      end
     end
   end
 
@@ -24,13 +30,18 @@ class SessionsController < ApplicationController
   end
 
   def create_teacher
-    if params[:user].empty?
+    if params[:username].empty?
       render :new_teacher
     else
-      user = Teacher.find_by(name: params[:user])
-      session[:user_id] = user.id
-      session[:user_type] = "teacher"
-      redirect_to teacher_path(user)
+      if Teacher.find_by(username: params[:username])
+        user = Teacher.find_by(username: params[:username])
+        session[:user_id] = user.id
+        session[:user_type] = "teacher"
+        redirect_to teacher_path(user)
+      else
+        flash.now[:message] = "Enter a valid username"
+        render :new_teacher
+      end
     end
   end
 end
