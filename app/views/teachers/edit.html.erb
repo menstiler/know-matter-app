@@ -1,6 +1,8 @@
 <h1>Edit Teacher</h1>
 
 <%= form_for @teacher do |f| %>
+  <%= f.label "Username: " %>
+  <%= f.text_field "username" %>
   <%= f.label "Name: " %>
   <%= f.text_field "name" %>
   <%= f.label "Title: " %>

@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @teacher = @booking.teacher
     if @booking.valid?
+      @booking.save
       redirect_to teacher_path(@teacher)
     else
       flash[:message] = @booking.errors.full_messages[0]

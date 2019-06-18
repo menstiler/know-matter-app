@@ -7,6 +7,10 @@ class Teacher < ApplicationRecord
   has_many :timeslots, through: :bookings
   has_one_attached :profile_image
 
+  validates :name, presence: true
+  validates :username, presence: true
+  validates :username, uniqueness: true
+
 
 
   def self.find_by_hobby_name(name)

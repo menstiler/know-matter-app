@@ -37,9 +37,9 @@
 <p>
 </div>
 
-
+<% unless @lessons.empty?  %>
 <strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p>
-
+<% end %>
 <% unless @lessons.empty? %>
   <%=button_to "Your Lessons", your_lessons_path, method: :get %>
 <% end %>

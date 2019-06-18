@@ -9,8 +9,10 @@ class TeachersController < ApplicationController
   def show
     @reviews = @teacher.reviews
     session[:original_uri] = request.url
-    @student = Student.find(session[:user_id])
-    @lesson = Lesson.new(teacher_id: @teacher.id, student_id: @student.id)
+    if session[:user_type] == "student"
+      @student = Student.find(session[:user_id])
+      @lesson = Lesson.new(teacher_id: @teacher.id, student_id: @student.id)
+    end
     @timeslots = @teacher.my_available_timeslots
   end
 
@@ -45,7 +47,7 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit(:name, :bio, :title, :profile_image, :rates, :location, :hobby_id)
+    params.require(:teacher).permit(:username, :name, :bio, :title, :profile_image, :rates, :location, :hobby_id)
   end
 
 
