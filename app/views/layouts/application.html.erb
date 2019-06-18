@@ -4,7 +4,7 @@
     <title>KnowMatterApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" type="text/css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,15 +12,16 @@
   <body>
     <nav>
       <ul>
+        <!-- <li class = "logo"><%= link_to image_tag("brain_icon.png") %></li> -->
         <li><a href="/welcome">Home</a></li>
         <li><a href="/hobbies">Browse</a></li>
         <% if @student %>
         <li><a href="/students/<%= @student.id %>">My Profile</a></li>
         <% end %>
         <% if session[:user_id] %>
-          <li><%=link_to "Logout", logout_path, method: :delete %></li>
+          <li style ="float:right; font-weight: bold"><%=link_to "Logout", logout_path, method: :delete %></li>
         <% else %>
-        <li><%=link_to "Sign Up", new_student_path, method: :get %></li>
+        <li style = "float:right; font-weight: bold"><%=link_to "Sign Up", new_student_path, method: :get %></li>
         <% end %>
       </ul>
     </nav>

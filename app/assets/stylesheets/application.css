@@ -15,15 +15,73 @@
  */
 
 
+
+
+
+/* nav .logo {
+  display: inline-block;
+  width: 10px;
+} */
+
+
+
 header {
-  font-size: 50px;
-  font-family: sans-serif;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
   border: 10px;
-  margin: 0;
+  /* margin-top: 90px; */
 }
 
 header h1 {
-  color: lightsalmon;
+  color: black;
+  text-align: center;
+}
+
+header h6 {
+  color: darkgrey;
+  font-weight: bold;
+}
+
+.hobby_categories {
+  margin-top: 30px;
+}
+
+div .recommendations {
+  margin: 20px;
+}
+
+.welcome {
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.banner_container {
+  height: 450px;
+  background-image: url("https://blog.intercomassets.com/wp-content/uploads/2018/03/02092036/build-a-brand_FINAL_03-%402x-1400x663.jpg")
+}
+
+/* nav {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+} */
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: lightblue;
+  border-radius: 50%;
+}
+
+.hobby_categories {
+  text-align: center;
+
+}
+
+.recommendations {
+
 }
 
 nav ul {
@@ -31,12 +89,18 @@ nav ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: rgb(30, 0, 237);
+  height: 70px;
 }
 
 nav ul li {
   float: left;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+
+nav ul li .a {
+  float: right;
 }
 
 nav ul li a {
@@ -48,5 +112,5 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #111;
+  background-color: rgb(253, 197, 210);
 }

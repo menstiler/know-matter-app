@@ -17,7 +17,8 @@ class HobbiesController < ApplicationController
     input = params[:search]
     @category = params[:name]
     if input
-      @hobbies = Hobby.all.select do |hobby|
+      hobbies = Hobby.select_categories(@category)
+      @hobbies = hobbies.select do |hobby|
         hobby.name.downcase.include?(input.downcase) || hobby.subclass.downcase.include?(input.downcase)
       end
     else

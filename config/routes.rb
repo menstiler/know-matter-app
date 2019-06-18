@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   resources :teachers, only: [:index, :show, :new, :create]
   resources :hobbies, only: [:index, :show, :new, :create]
+  resources :bookings, only: [:index, :show, :new, :create]
+  resources :timeslots, only: [:index, :show, :new, :create]
+
 
   post '/reviews' => "reviews#create"
   get '/success_delete' => "reviews#success_delete", as: "success_delete"
@@ -20,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :reviews
   resources :students
+
 
   get 'students/:id/lessons' => "students#lessons", as: "your_lessons"
 

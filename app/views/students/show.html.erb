@@ -1,34 +1,44 @@
+
+<body>
 <% if flash[:message] %>
 <h1><%= flash[:message] %></h1>
 <% end %>
 
+<div class ="profile">
 <h1><%= @student.name %></h1>
 
 <% if @student.profile_image.attached? %>
-<img src="<%=(url_for(@student.profile_image))%>" alt="profile_image">
+<div class = "square"><img src="<%=(url_for(@student.profile_image))%>" alt="profile_image"></div>
 <% else %>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
 <% end %>
+<div class ="info">
 <p>Name: <%= @student.name %></p>
 <p>Age: <%= @student.age %></p>
 <p>Email: <%= @student.email %></p>
+</div>
+<div class="reviews">
 <p>Reviews: <% unless @reviews.empty? %>
-            <ul>
-             <% @reviews.each do |review| %>
-             <li>
-                <p><img src="<%= review.teacher.profile_image %>" alt="profile_image"></p>
-                <p><strong>Teacher:</strong> <%= review.teacher.name %></p>
-                <p><strong>Content:</strong> <%= review.content %></p>
-                <p><strong>Rating:</strong> <%= review.rating %></p>
-                <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
-                <%= button_to "Edit", edit_review_path(review), method: :get %>
-            </li>
-            <% end %>
-            </ul>
-            <% else %>
-              <p>No reviews</p>
-            <% end %>
-<p><strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p>
+  <ul>
+   <% @reviews.each do |review| %>
+   <!-- <li> -->
+      <p><img src="<%= review.teacher.profile_image %>" alt="profile_image" style ="width: 100px"></p>
+      <p><strong>Teacher:</strong> <%= review.teacher.name %></p>
+      <p><strong>Content:</strong> <%= review.content %></p>
+      <p><strong>Rating:</strong> <%= review.rating %></p>
+      <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= button_to "Edit", edit_review_path(review), method: :get %>
+  <!-- </li> -->
+  <% end %>
+  </ul>
+  <% else %>
+    <p>No reviews</p>
+  <% end %>
+<p>
+</div>
+
+
+<strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p>
 
 <% unless @lessons.empty? %>
   <%=link_to "Your Lessons", your_lessons_path %>
@@ -39,3 +49,5 @@
 
 
 <%= button_to "Delete", @student, method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
+</body>

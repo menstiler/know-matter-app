@@ -1,14 +1,30 @@
+
 <header style="padding-left:16px">
+  <h6>Know Matter Where You Are</h6>
   <h1>Welcome <%= @student.name %>!</h1>
 </header>
 
-<body>
+<div class="banner_container">
 
-  <h3>What would you like to learn today?</h3>
+</div>
 
-  <%= link_to "CREATIVE", "/hobbies/show/Creative" %>
-  <%= link_to "TECHNICAL", "/hobbies/show/Tech" %>
-  <%= link_to "LIFESTYLE", "/hobbies/show/Lifestyle" %>
+<body class ="welcome">
+
+  <h1>What would you like to learn today?</h1>
+
+<div class="hobby_categories">
+
+
+  <div class = "circle"><%= link_to "CREATIVE", "/hobbies/show/Creative" %></div>
+  <div class = "circle"><%= link_to "TECHNICAL", "/hobbies/show/Tech" %></div>
+  <div class = "circle"><%= link_to "LIFESTYLE", "/hobbies/show/Lifestyle" %></div>
+
+</div>
+
+<div class="recommendations">
+
+
+  <h3>Our most popular classes: </h3>
 
   <h3>Recommendations for you: </h3>
 
@@ -23,5 +39,5 @@
   </ul>
   </div>
   <% end %>
-
+</div>
 </body>
