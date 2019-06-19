@@ -1,10 +1,21 @@
 
 <h1>Hobbies</h1>
 
+Search by Keyword
 <%= form_tag("/hobbies", method: :get) do %>
   <%= text_field_tag :search %>
   <%= submit_tag "Search" %>
 <% end %>
+
+Search by Hobby Name:
+<%= form_tag("/hobbies", method: :get) do %>
+  <%= select_tag :search, options_for_select(@hobby_names)%>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<%= button_to "Sort by Popularity", {:action => "sort_by_popularity"}, :method => :get %>
+
+<%= button_to "Refresh", {:action => "index"}, :method => :get %>
 
 <% @hobbies.each do |hobby| %>
 <div class="card">

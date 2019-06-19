@@ -1,3 +1,9 @@
+<% if flash[:message] %>
+  <% flash[:message].each do |message|%><br>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <h1>Create New Hobby</h1>
 
 <%= form_tag "/teachers/create_profile", :method => :post, multipart: true do |f| %>

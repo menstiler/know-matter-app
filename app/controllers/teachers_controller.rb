@@ -12,18 +12,24 @@ class TeachersController < ApplicationController
     if session[:user_type] == "student"
       @student = Student.find(session[:user_id])
       @lesson = Lesson.new(teacher_id: @teacher.id, student_id: @student.id)
+      @hobby = @teacher.hobby
     end
     @timeslots = @teacher.my_available_timeslots
   end
 
-  def new
-    @teacher = Teacher.new
-  end
-
   def create_profile
-    @hobby = Hobby.create(hobby_params)
-    @teacher = Teacher.new
-    render :new
+
+    @hobby = Hobby.new(hobby_params)
+    if @hobby.valid?
+      @hobby.save
+      @teacher = Teacher.new
+      render :new
+    else
+      flash[:message] = @hobby.errors.full_messages
+      redirect_to new_hobby_path
+    end
+
+
   end
 
   def existing_hobby_create_profile
@@ -33,10 +39,17 @@ class TeachersController < ApplicationController
   end
 
   def create
-    @teacher = Teacher.create(teacher_params)
-    session[:user_id] = @teacher.id
-    session[:user_type] = "teacher"
-    redirect_to teacher_welcome_path
+    @teacher = Teacher.new(teacher_params)
+    if @teacher.valid?
+      @teacher.save
+      session[:user_id] = @teacher.id
+      session[:user_type] = "teacher"
+      redirect_to teacher_welcome_path
+    else
+      flash[:message] = @teacher.errors.full_messages
+      @hobby = @teacher.hobby
+      redirect_to "/teachers/#{@hobby.id}/create_profile"
+    end
   end
 
   def edit
@@ -69,7 +82,7 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit(:username, :name, :bio, :title, :profile_image, :rates, :location, :hobby_id)
+    params.require(:teacher).permit(:username, :name, :bio, :title, :profile_image, :rates, :location, :hobby_id, :username)
   end
 
   def hobby_params

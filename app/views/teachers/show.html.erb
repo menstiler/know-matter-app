@@ -2,6 +2,10 @@
 <h1><%= flash[:message] %></h1>
 <% end %>
 
+<% if session[:usertype] == "student" %>
+<%= button_to "Back to Browse #{@hobby.subclass}", "/hobbies/#{@hobby.id}", :method => :get %>
+<% end %>
+
 <h1><%= @teacher.name %>'s Profile Page</h1>
 
 <% if @teacher.profile_image.attached? %>
@@ -27,6 +31,7 @@ $<%= @teacher.rates %>/hour
     <h3>Your available Timeslots</h3>
     <% @timeslots.each do |timeslot| %>
         <p><%= timeslot %></p>
+        <%= button_to "Delete Timeslot", "/bookings/#{timeslot.booking.id}", :method => :delete %>
     <% end %>
   <% else %>
     no timeslots
@@ -73,8 +78,9 @@ $<%= @teacher.rates %>/hour
   <%= button_to "Edit Profile", "#{teachers_path}/#{@teacher.id}/edit", :method => :get %>
   <%= button_to "Delete Profile", @teacher, method: :delete, data: { confirm: "Are you sure?"} %>
   <% end %>
-  <% if session[:user_path] == "student" %>
+  <% if session[:user_type] == "student" %>
   <%= button_to "Add Review", new_review_path(@teacher), :method => :get %>
   <% end %>
+
 
 <%= button_to "Main Page", {:action => "index"}, :method => :get %>

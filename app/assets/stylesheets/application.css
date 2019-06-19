@@ -15,10 +15,6 @@
  */
 
 
-
-
-
-
 nav .logo a {
   padding: 0px
 }
@@ -45,12 +41,17 @@ header h6 {
   font-weight: bold;
 }
 
-.hobby_categories {
-  margin-top: 30px;
+#hobby_categories {
+  display: flex;
+  justify-content: space-around;
 }
 
-div .recommendations {
-  margin: 20px;
+#hobby_categories .circle {
+  width: 250px;
+  height: 250px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .welcome {
@@ -76,9 +77,24 @@ div .recommendations {
 
 }
 
-.recommendations {
-
+.recommendations .card {
+  width: 30%;
+  height: 350px;
 }
+
+.popular .card {
+  width: 30%;
+  height: 350px;
+}
+
+#recent {
+  display: flex;
+}
+
+#top_trending {
+  display: flex;
+}
+
 
 nav ul {
   list-style-type: none;
@@ -115,12 +131,12 @@ nav ul li a:hover {
 
 
 footer {
-  position: fixed;
-  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   bottom: 0;
   width: 100%;
-  background-color: white;
-  margin-top: 10px;
+  height: 2.5rem;
 }
 
 footer li {
