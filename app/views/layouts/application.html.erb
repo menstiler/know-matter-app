@@ -12,9 +12,11 @@
   <body>
     <nav>
       <ul>
-
-        <li class = "logo"><%= link_to image_tag("brain_icon.png") %></li>
-
+        <% if session[:user_id] %>
+          <li class = "logo"><%= link_to image_tag("brain_icon.png"), "#{session[:user_id]}" %></li>
+        <% else %>
+          <li ><%=link_to "Login", login_path, method: :get %></li>
+        <% end %>
         <% if session[:user_id] %>
           <% if session[:user_type] == "student" %>
             <li><a href="/welcome">Home</a></li>

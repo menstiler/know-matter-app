@@ -30,8 +30,9 @@ $<%= @teacher.rates %>/hour
   <% unless @timeslots.empty? %>
     <h3>Your available Timeslots</h3>
     <% @timeslots.each do |timeslot| %>
+      <% booking = @teacher.bookings.find {|a| a.timeslot.timeslot == timeslot} %>
         <p><%= timeslot %></p>
-        
+      <%= button_to "Delete", "/bookings/#{booking.id}", method: :delete, data: {confirm: "Are you sure?"} %>
     <% end %>
   <% else %>
     no timeslots
