@@ -22,18 +22,17 @@
 <h3>Rates:</h3>
 $<%= @teacher.rates %>/hour
 
-<% if session[:user_id] == @teacher.id %>
-  <% unless @teacher.timeslots.empty? %>
+<% if session[:user_type] == "teacher" && session[:user_id] ==  @teacher.id %>
+  <% unless @timeslots.empty? %>
     <h3>Your available Timeslots</h3>
-    <% @teacher.bookings.each do |booking| %>
-      <% if booking.status == "Available" %>
-        <p><%= booking.timeslot.timeslot %></p>
-      <% end %>
+    <% @timeslots.each do |timeslot| %>
+        <p><%= timeslot %></p>
     <% end %>
   <% else %>
     no timeslots
   <% end %>
-<% else %>
+  <%= link_to "Add Timeslot", '/bookings/new' %>
+<% elsif session[:user_type] == "student" %>
   <h3>Book Lesson</h3>
 
   <% if !@timeslots.empty? %>
@@ -49,9 +48,7 @@ $<%= @teacher.rates %>/hour
   <% end %>
 <% end %>
 
-<% if session[:user_id] == @teacher.id %>
-<%= link_to "Add Timeslot", '/timeslots/new' %>
-<% end %>
+
 <h3>Reviews:</h3>
 <% unless @reviews.empty? %>
 <ul>
@@ -61,7 +58,7 @@ $<%= @teacher.rates %>/hour
       Student: <%= review.student.name %><br>
       Rating: <%= review.rating %><br>
       Content: <%= review.content %><br>
-      <% if session[:user_id] == review.student.id %>
+      <% if session[:user_id] == review.student.id && session[:user_type] == "student" %>
       <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
       <%= button_to "Edit", edit_review_path(review), method: :get %>
       <% end %>
@@ -72,7 +69,7 @@ $<%= @teacher.rates %>/hour
     <p>No reviews</p>
   <% end %>
 
-  <% if session[:user_id] == @teacher.id %>
+  <% if session[:user_type] == "teacher" && session[:user_id] ==  @teacher.id %>
   <%= button_to "Edit Profile", "#{teachers_path}/#{@teacher.id}/edit", :method => :get %>
   <%= button_to "Delete Profile", @teacher, method: :delete, data: { confirm: "Are you sure?"} %>
   <% end %>

@@ -21,13 +21,7 @@ class TeachersController < ApplicationController
   end
 
   def create_profile
-    @hobby = Hobby.new
-    @hobby.category = params[:category]
-    @hobby.name = params[:name]
-    @hobby.subclass = params[:subclass]
-    @hobby.image_url = params[:image_url]
-
-    @hobby.save
+    @hobby = Hobby.create(hobby_params)
     @teacher = Teacher.new
     render :new
   end
@@ -78,6 +72,9 @@ class TeachersController < ApplicationController
     params.require(:teacher).permit(:username, :name, :bio, :title, :profile_image, :rates, :location, :hobby_id)
   end
 
+  def hobby_params
+    params.require(:hobby).permit(:category, :name, :subclass, :image_url)
+  end
 
   def set_teacher
     @teacher = Teacher.find(params[:id])

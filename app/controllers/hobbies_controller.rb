@@ -35,6 +35,4 @@ class HobbiesController < ApplicationController
     @hobby = Hobby.new
   end
 
-
-
 end
