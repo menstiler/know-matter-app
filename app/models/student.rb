@@ -20,4 +20,19 @@ class Student < ApplicationRecord
     most_popular = arr.uniq.max_by {|i| arr.count(i)}
   end
 
+  def student_lesson_types
+    subclasses = self.lessons.map {|lesson| lesson.teacher.hobby.subclass}
+    categories = self.lessons.map {|lesson| lesson.teacher.hobby.category}
+    hobbies = self.lessons.map {|lesson| lesson.teacher.hobby.name}
+    all_lessons_type = [subclasses, categories, hobbies].flatten
+  end
+
+  def student_recommendation
+    Hobby.all.select do |hobby|
+      student_lesson_types.include?(hobby.name) ||
+      student_lesson_types.include?(hobby.category) ||
+      student_lesson_types.include?(hobby.subclass)
+    end
+  end
+
 end

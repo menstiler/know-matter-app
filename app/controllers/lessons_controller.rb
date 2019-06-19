@@ -17,8 +17,9 @@ class LessonsController < ApplicationController
     @student = Student.find(@lesson.student.id)
     booking = @lesson.teacher.bookings.find {|booking| booking.timeslot.timeslot == @lesson.time }
     booking.update(status: "Available")
+    @canceled_lesson = @lesson
     @lesson.destroy
-    flash.now[:notice] = "Successfully canceled lesson"
+    flash[:message] = "Successfully canceled #{@lesson.teacher.hobby.subclass} lesson with #{@lesson.teacher.name}"
     redirect_to "/students/#{session[:user_id]}/lessons"
   end
 

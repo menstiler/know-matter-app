@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/select_hobby' => "teachers#select_hobby", as: "select_hobby"
   post '/teachers/create_profile' => "teachers#create_profile"
   get '/teachers/:id/create_profile' => "teachers#existing_hobby_create_profile"
+  get '/timeslots/new' => "bookings#new"
 
   resources :teachers
   resources :hobbies, only: [:index, :show, :new, :create]
