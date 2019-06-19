@@ -6,17 +6,17 @@
 
 <h1>Create New Hobby</h1>
 
-<%= form_tag("/teachers/create_profile", :method => :post) do |f| %>
+<%= form_tag "/teachers/create_profile", :method => :post, multipart: true do |f| %>
   <%= label_tag "Category: " %>
-  <%= select_tag :category, options_for_select(['Creative', 'Tech', 'Lifestyle']) %>
+  <%= select_tag "hobby[category]", options_for_select(['Creative', 'Tech', 'Lifestyle']) %>
   <p><%= label_tag "Name: " %></p>
   <sub>i.e. Music, Art...etc.</sub><br>
-  <%= text_field_tag :name %>
+  <%= text_field_tag "hobby[name]" %>
   <p><%= label_tag "Subclass: " %></p>
   <sub>i.e. Piano, Painting...etc.</sub><br>
-  <%= text_field_tag :subclass %><br>
-  <p><%= label_tag "Image URL: " %></p>
-  <%= text_field_tag :image_url %><br>
+  <%= text_field_tag "hobby[subclass]" %><br>
+  <p><%= label_tag "Choose Image: " %></p>
+  <p><%= file_field_tag "hobby[image_url]" %></p>
   <br>
   <%= submit_tag "Next" %>
 <% end %>

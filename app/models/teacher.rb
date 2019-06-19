@@ -39,7 +39,9 @@ class Teacher < ApplicationRecord
   # returns all timeslots for teacher (both booked and available)
   def my_lesson_timeslots
     self.lessons.map do |lesson|
-      lesson.time
+      if lesson.active == true || lesson.request == true
+        lesson.time
+      end
     end
   end
 

@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy, :lessons]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :lessons, :clear_lessons]
   before_action :student_authorized, only: [:show, :edit, :lessons]
 
   def index
@@ -46,7 +46,18 @@ class StudentsController < ApplicationController
   end
 
   def lessons
-    @lessons = @student.lessons
+    session[:original_uri] = request.url
+    @active_lessons = @student.lessons.select {|lesson| lesson.active == true}
+    @inactive_lessons = @student.lessons.select {|lesson| lesson.active == false && lesson.request == false }
+    @waiting_for_approval = @student.lessons.select {|lesson| lesson.active == false && lesson.request == true }
+  end
+
+  def clear_lessons
+    inactive_lessons = @student.lessons.select {|lesson| lesson.active == false}
+    inactive_lessons.each {|lesson| lesson.destroy }
+    # byebug
+    flash[:message] = "All canceled lesson have been deleted"
+    redirect_to your_lessons_path(session[:user_id])
   end
 
   private

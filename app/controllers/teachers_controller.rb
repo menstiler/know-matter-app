@@ -18,11 +18,8 @@ class TeachersController < ApplicationController
   end
 
   def create_profile
-    @hobby = Hobby.new
-    @hobby.category = params[:category]
-    @hobby.name = params[:name]
-    @hobby.subclass = params[:subclass]
-    @hobby.image_url = params[:image_url]
+
+    @hobby = Hobby.new(hobby_params)
     if @hobby.valid?
       @hobby.save
       @teacher = Teacher.new
@@ -31,6 +28,8 @@ class TeachersController < ApplicationController
       flash[:message] = @hobby.errors.full_messages
       redirect_to new_hobby_path
     end
+
+
   end
 
   def existing_hobby_create_profile
@@ -86,6 +85,9 @@ class TeachersController < ApplicationController
     params.require(:teacher).permit(:username, :name, :bio, :title, :profile_image, :rates, :location, :hobby_id, :username)
   end
 
+  def hobby_params
+    params.require(:hobby).permit(:category, :name, :subclass, :image_url)
+  end
 
   def set_teacher
     @teacher = Teacher.find(params[:id])

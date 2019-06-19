@@ -21,9 +21,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    redirect_login = session[:user_type]
     session[:user_type] = nil
     session[:user_id] = nil
-    render :new
+    if redirect_login == "teacher"
+      render :new_teacher
+    else
+      render :new
+    end
   end
 
   def new_teacher

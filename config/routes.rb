@@ -4,14 +4,13 @@ Rails.application.routes.draw do
   get '/welcome' => "welcome#home", as: "welcome"
   get '/teacher_welcome' => "welcome#teacher_home", as: "teacher_welcome"
 
-  #custom routes for lessons
-  post '/lessons' => "lessons#create_new_lesson"
+  post '/lessons' => "lessons#request_new_lesson", as: "request_new_lesson"
+  post '/lessons/:id' => "lessons#create_new_lesson", as: "new_lesson"
   get '/lessons' => "lessons#index"
   get '/thank_you' => "lessons#thank_you", as: "thank_you"
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
-
-
-  #custom routes for hobbies
+  post '/lessons/:id/request_cancel' => "lessons#request_cancel", as: "request_cancel"
+  delete '/students/:id/lessons' => "students#clear_lessons", as: "clear_lessons"
   get '/hobbies/show/:name' => "hobbies#show_by_category"
   get '/hobbies/sort_by_popularity' => "hobbies#sort_by_popularity"
   get '/hobbies/:name/by_popularity' => "hobbies#category_sort_by_popularity"
@@ -28,6 +27,8 @@ Rails.application.routes.draw do
   get '/timeslots/new' => "bookings#new"
 
 
+  get '/bookings/new' => "bookings#new"
+  post '/bookings' => "bookings#create"
 
   #custom routes for reviews
   post '/reviews' => "reviews#create"
