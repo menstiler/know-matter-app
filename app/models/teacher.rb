@@ -45,4 +45,20 @@ class Teacher < ApplicationRecord
     end
   end
 
+  def my_students
+    students = self.students.map do |student|
+      student.name
+    end
+  end
+
+  def most_popular_student
+    arr = self.my_students
+    most_popular = arr.uniq.max_by {|i| arr.count(i)}
+  end
+
+  def avg_rating
+    ratings = self.reviews.map {|review| review.rating}
+    ratings.inject(0.0) { |sum, el| sum + el } / ratings.size
+  end
+
 end
