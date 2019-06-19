@@ -34,7 +34,9 @@ class Teacher < ApplicationRecord
 
   def my_lesson_timeslots
     self.lessons.map do |lesson|
-      lesson.time
+      if lesson.active == true || lesson.request == true
+        lesson.time
+      end
     end
   end
 

@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   get '/welcome' => "welcome#home", as: "welcome"
   get '/teacher_welcome' => "welcome#teacher_home", as: "teacher_welcome"
 
-  post '/lessons' => "lessons#create_new_lesson"
+  post '/lessons' => "lessons#request_new_lesson", as: "request_new_lesson"
+  post '/lessons/:id' => "lessons#create_new_lesson", as: "new_lesson"
   get '/lessons' => "lessons#index"
   get '/thank_you' => "lessons#thank_you", as: "thank_you"
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
+  post '/lessons/:id/request_cancel' => "lessons#request_cancel", as: "request_cancel"
+  delete '/students/:id/lessons' => "students#clear_lessons", as: "clear_lessons"
   get '/hobbies/show/:name' => "hobbies#show_by_category"
 
   get '/select_hobby' => "teachers#select_hobby", as: "select_hobby"
@@ -17,6 +20,8 @@ Rails.application.routes.draw do
   resources :bookings, only: [:index, :show, :new, :create]
   resources :timeslots, only: [:index, :show, :new, :create]
 
+  get '/bookings/new' => "bookings#new"
+  post '/bookings' => "bookings#create"
 
   post '/reviews' => "reviews#create"
   get '/success_delete' => "reviews#success_delete", as: "success_delete"

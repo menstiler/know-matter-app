@@ -9,11 +9,17 @@
 <% @hobbies.each do |hobby| %>
 <div class="card">
 <ul>
-      <a href="<%=hobby_path(hobby)%>"><img src="<%=hobby.image_url%>" alt="Hobby Image" style="width:90%"><br></a>
-      <div class ="container">
-      <h4><%= hobby.name %></h4>
-      <p><%= hobby.subclass %></p>
-      </div>
+    <a href="<%=hobby_path(hobby)%>">
+      <% if hobby.image_url.attached? %>
+        <img src="<%= (url_for(hobby.image_url))%>" alt="Hobby Image" style="width:90%"><br></a>
+      <% else %>
+        <% image_show = hobby.default_image %>
+        <img src="<%= image_show%>" alt="Hobby Image" style="width:90%"><br></a>
+      <% end %>
+    <div class ="container">
+    <h4><%= hobby.name %></h4>
+    <p><%= hobby.subclass %></p>
+    </div>
 </ul>
 </div>
 <% end %>

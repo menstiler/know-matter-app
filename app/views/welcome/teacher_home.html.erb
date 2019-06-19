@@ -2,16 +2,44 @@
   <h1>Welcome <%= @teacher.name %>!</h1>
 </header>
 
+<% if flash[:message] %>
+<%= flash[:message] %>
+<% end %>
+
 <body>
 
   <h3>Your Lessons</h3>
+  <% unless @waiting_for_approval.empty? %>
+  <h4>Lessons waiting for approval</h4>
   <ul>
-  <% @lessons.each do |lesson| %>
+  <% @waiting_for_approval.each do |lesson| %>
     <li>
       <%= lesson.student.name %>
       <%= lesson.time %>
-
+      <%= button_to "Confirm Booking", new_lesson_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
+      <%= button_to "Cancel Booking", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
     </li>
   <% end %>
   </ul>
+  <% end %>
+
+  <% unless @active_lessons.empty? %>
+  <h4>Active Lessons</h4>
+  <ul>
+  <% @active_lessons.each do |lesson| %>
+    <li>
+      <%= lesson.student.name %>
+      <%= lesson.time %>
+      <% if lesson.request == true && lesson.active == true%>
+        <%= button_to "Confirm Cancelation", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% elsif lesson.request == true && lesson.active == false %>
+      <%= button_to "Confirm Booking", new_lesson_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
+      <% else %>
+      <%= button_to "Cancel", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+  <% end %>
+
 </body>

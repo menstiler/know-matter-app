@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     timeslot = params[:day] + ": " + params[:time]
     @timeslot = Timeslot.find_by(timeslot: timeslot)
     @teacher = Teacher.find(session[:user_id])
-    @booking = Booking.new(teacher_id: @teacher.id, timeslot_id: @timeslot.id, status: "Available")
+    @booking = Booking.new(teacher_id: @teacher.id, timeslot_id: @timeslot.id, status: true)
     if @booking.valid?
       @booking.save
       redirect_to teacher_path(@teacher)

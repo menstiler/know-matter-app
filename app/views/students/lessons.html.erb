@@ -1,18 +1,57 @@
-<% if flash[:notice] %>
-<% byebug %>
-<%= flash[:notice] %>
+<% if flash[:message] %>
+<%= flash[:message] %>
 <% end %>
 
+<% unless @waiting_for_approval.empty? %>
+<h4>Lessons waiting for approval</h4>
 <ul>
-<% @lessons.each do |lesson| %>
+<% @waiting_for_approval.each do |lesson| %>
 <li>
    <p><strong>Lesson:</strong> <%= lesson.teacher.hobby.subclass %></p>
    <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p>
    <p><strong>Location:</strong>  <%= lesson.location %></p>
    <p><strong>Time:</strong>  <%= lesson.time %></p>
-   <%= button_to "Cancel", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
    <%= button_to "Book another lesson with #{lesson.teacher.name}", teacher_path(lesson.teacher.id), method: :get %>
    <%= button_to "Book another #{lesson.teacher.hobby.name} lesson", hobby_path(lesson.teacher.hobby.id), method: :get %>
 </li>
 <% end %>
 </ul>
+<% end %>
+
+<% unless @active_lessons.empty? %>
+<h4>Active Lessons</h4>
+<ul>
+<% @active_lessons.each do |lesson| %>
+<li>
+   <p><strong>Lesson:</strong> <%= lesson.teacher.hobby.subclass %></p>
+   <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p>
+   <p><strong>Location:</strong>  <%= lesson.location %></p>
+   <p><strong>Time:</strong>  <%= lesson.time %></p>
+   <% if lesson.request == false %>
+    <%= button_to "Request Cancelation", request_cancel_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
+    <% elsif lesson.request == true %>
+    <%= button_to "Request Cancelation Pending", request_cancel_path(lesson), disabled: true %>
+    <% end %>
+   <%= button_to "Book another lesson with #{lesson.teacher.name}", teacher_path(lesson.teacher.id), method: :get %>
+   <%= button_to "Book another #{lesson.teacher.hobby.name} lesson", hobby_path(lesson.teacher.hobby.id), method: :get %>
+</li>
+<% end %>
+</ul>
+<% end %>
+
+<% unless @inactive_lessons.empty? %>
+<h2>Canceled Lessons</h2>
+<ul>
+<% @inactive_lessons.each do |lesson| %>
+<li>
+   <p><strong>Lesson:</strong> <%= lesson.teacher.hobby.subclass %></p>
+   <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p>
+   <p><strong>Location:</strong>  <%= lesson.location %></p>
+   <p><strong>Time:</strong>  <%= lesson.time %></p>
+   <%= button_to "Book another lesson with #{lesson.teacher.name}", teacher_path(lesson.teacher.id), method: :get %>
+   <%= button_to "Book another #{lesson.teacher.hobby.name} lesson", hobby_path(lesson.teacher.hobby.id), method: :get %>
+</li>
+<% end %>
+</ul>
+<%= button_to "Clear Canceled Lessons", clear_lessons_path(@student), method: :delete, data: { confirm: "Are you sure?"} %>
+<% end %>
