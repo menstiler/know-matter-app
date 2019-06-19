@@ -31,7 +31,7 @@ $<%= @teacher.rates %>/hour
     <h3>Your available Timeslots</h3>
     <% @timeslots.each do |timeslot| %>
         <p><%= timeslot %></p>
-        <%= button_to "Delete Timeslot", "/bookings/#{timeslot.booking.id}", :method => :delete %>
+        
     <% end %>
   <% else %>
     no timeslots
