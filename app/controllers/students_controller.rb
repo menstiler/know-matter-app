@@ -24,7 +24,7 @@ class StudentsController < ApplicationController
       session[:user_type] = "student"
       redirect_to welcome_path
     else
-      flash.now[:message] = @student.errors.full_messages[0]
+      flash.now[:message] = @student.errors.full_messages
       render :new
     end
   end

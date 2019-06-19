@@ -4,8 +4,8 @@ class BookingsController < ApplicationController
   def new
     @timeslot = Timeslot.new
     @teacher = Teacher.find(session[:user_id])
-    @days = Date::DAYNAMES
-    @times = ['9am - 10am','10am - 11am','11am - 12pm','1pm - 2pm','2pm - 3pm','3pm - 4pm','4pm - 5pm','5pm - 6pm','6pm - 7pm','7pm - 8pm']
+    @days = Timeslot.all_days
+    @times = Timeslot.all_times
   end
 
   def create
@@ -22,8 +22,16 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @teacher = @booking.teacher
+    @booking.delete
+    redirect_to teacher_path(@teacher)
+  end
+
   private
   def booking_params
     params.require(:booking).permit(:timeslot_id, :teacher_id, :status)
   end
+
 end

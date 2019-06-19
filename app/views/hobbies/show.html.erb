@@ -1,6 +1,19 @@
-<h1><%= @hobby.name %></h1>
+<h1><%= @hobby.subclass %></h1>
 
 <%= button_to "Go Back to Browse", {:action => "index"}, :method => :get %>
+
+Search by Name:
+<%= form_tag("/hobbies/show", method: :get) do %>
+  <%= text_field_tag :search %>
+  <%= hidden_field_tag :subclass, value: @hobby.subclass %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<%= button_to "Sort by Rating", "/hobbies/#{@hobby.subclass}/sort_by_rating", :method => :get %>
+<%= button_to "Sort by Price", "/hobbies/#{@hobby.subclass}/sort_by_rates", :method => :get %>
+
+
+<%= button_to "Refresh", "/hobbies/#{@hobby.id}", :method => :get %>
 
 <% @teachers.each do |teacher| %>
 <div class="card">

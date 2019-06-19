@@ -14,4 +14,39 @@
     </li>
   <% end %>
   </ul>
+
+
+  <div id="top_trending">
+    <h3>Our most popular classes: </h3>
+
+    <% @popular_hobbies.each do |hobby| %>
+    <div class="card">
+    <ul>
+          <a href="<%=hobby_path(hobby)%>"><img src="<%=hobby.image_url%>" alt="Hobby Image" style="width:90%"><br></a>
+          <div class ="container">
+          <h4><%= hobby.name %></h4>
+          <p><%= hobby.subclass %></p>
+          </div>
+    </ul>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="recent">
+    <h3>Recently Added: </h3>
+
+    <% @recent_hobbies.each do |hobby| %>
+    <div class="card">
+    <ul>
+          <a href="<%=hobby_path(hobby)%>"><img src="<%=hobby.image_url%>" alt="Hobby Image" style="width:90%"><br></a>
+          <div class ="container">
+          <h4><%= hobby.name %></h4>
+          <p><%= hobby.subclass %></p>
+          </div>
+    </ul>
+    </div>
+    <% end %>
+  </div>
+
+
 </body>

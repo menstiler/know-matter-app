@@ -1,6 +1,6 @@
 
 <header style="padding-left:16px">
-  <h6>Know Matter Where You Are</h6>
+  <h6>Know Matter Where You Are in Your Life</h6>
   <h1>Welcome <%= @student.name %>!</h1>
 </header>
 
@@ -12,7 +12,7 @@
 
   <h1>What would you like to learn today?</h1>
 
-<div class="hobby_categories">
+<div id="hobby_categories">
 
 
   <div class = "circle"><%= link_to "CREATIVE", "/hobbies/show/Creative" %></div>
@@ -21,11 +21,24 @@
 
 </div>
 
-<div class="recommendations">
 
-
+<div class="popular">
   <h3>Our most popular classes: </h3>
 
+  <% @popular_hobbies.each do |hobby| %>
+  <div class="card">
+  <ul>
+        <a href="<%=hobby_path(hobby)%>"><img src="<%=hobby.image_url%>" alt="Hobby Image" style="width:90%"><br></a>
+        <div class ="container">
+        <h4><%= hobby.name %></h4>
+        <p><%= hobby.subclass %></p>
+        </div>
+  </ul>
+  </div>
+  <% end %>
+</div>
+
+<div class="recommendations">
   <h3>Recommendations for you: </h3>
 
   <% @hobbies.each do |hobby| %>
@@ -40,4 +53,5 @@
   </div>
   <% end %>
 </div>
+
 </body>
