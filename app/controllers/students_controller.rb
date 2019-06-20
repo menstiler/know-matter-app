@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :lessons, :clear_lessons]
-  before_action :student_authorized, only: [:show, :edit, :lessons]
+  before_action :student_authorized, only: [:show, :edit, :lessons, :index]
 
   def index
     @students = Student.all
@@ -53,7 +53,7 @@ class StudentsController < ApplicationController
   end
 
   def clear_lessons
-    inactive_lessons = @student.lessons.select {|lesson| lesson.active == false}
+    inactive_lessons = @student.lessons.select {|lesson| lesson.active == false && lesson.request == false }
     inactive_lessons.each {|lesson| lesson.destroy }
     # byebug
     flash[:message] = "All canceled lesson have been deleted"

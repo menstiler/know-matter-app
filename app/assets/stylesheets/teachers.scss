@@ -1,3 +1,59 @@
 // Place all the styles related to the Teachers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.teacher .profile img {
+  width: 100%
+}
+
+.teacher .location .location-map iframe {
+  vertical-align:bottom
+}
+
+.teacher .profile-inner, .teacher .timeslot {
+  width:60%
+}
+.image-container {
+  margin: 0 auto;
+}
+.teacher .location {
+  display: flex;
+border-radius: 10px;
+border: 2px #e9e3e3ad solid;
+display: flex;
+align-items: center;
+margin-top:12px;
+}
+
+.teacher .location .location-info {
+  padding:10px
+}
+
+.timeslot {
+  margin: 2%;
+  padding: 30px;
+  border: 2px #e9e3e3ad solid;
+  border-radius: 5px;
+  width: 50%;
+  font-family: "Montserrat", sans-serif;
+}
+
+@media only screen and (max-width: 1025px) {
+  .teacher .location .location-map iframe {
+    width:100%
+  }
+   .image-info {
+    flex-direction: column;
+  }
+  .timeslot {
+    margin:0px;
+    width:100%
+  }
+  .timeslot-container {
+    margin: 2%
+  }
+  .teacher .location {
+    flex-direction: column;
+    align-items: stretch
+  }
+}

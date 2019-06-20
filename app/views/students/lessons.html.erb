@@ -1,11 +1,12 @@
 <% if flash[:message] %>
 <%= flash[:message] %>
 <% end %>
-
+<div class="lesson-container" >
 <% unless @waiting_for_approval.empty? %>
-<h4>Lessons waiting for approval</h4>
+<div class="lesson-col" >
+<h2>Lessons waiting for approval</h2>
 <ul>
-<% @waiting_for_approval.each do |lesson| %>
+<% @waiting_for_approval.each_with_index do |lesson, index| %>
 <li>
    <p><strong>Lesson:</strong> <%= lesson.teacher.hobby.subclass %></p>
    <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p>
@@ -13,13 +14,17 @@
    <p><strong>Time:</strong>  <%= lesson.time %></p>
    <%= button_to "Book another lesson with #{lesson.teacher.name}", teacher_path(lesson.teacher.id), method: :get %>
    <%= button_to "Book another #{lesson.teacher.hobby.name} lesson", hobby_path(lesson.teacher.hobby.id), method: :get %>
+   <% if index > 1 %>
+   <% end %>
 </li>
 <% end %>
 </ul>
+</div>
 <% end %>
 
 <% unless @active_lessons.empty? %>
-<h4>Active Lessons</h4>
+<div class="lesson-col" >
+<h2>Active Lessons</h2>
 <ul>
 <% @active_lessons.each do |lesson| %>
 <li>
@@ -38,9 +43,11 @@
 </li>
 <% end %>
 </ul>
+</div>
 <% end %>
 
 <% unless @inactive_lessons.empty? %>
+<div class="lesson-col" >
 <h2>Canceled Lessons</h2>
 <ul>
 <% @inactive_lessons.each do |lesson| %>
@@ -55,4 +62,6 @@
 <% end %>
 </ul>
 <%= button_to "Clear Canceled Lessons", clear_lessons_path(@student), method: :delete, data: { confirm: "Are you sure?"} %>
+</div>
 <% end %>
+</div>

@@ -16,29 +16,31 @@
       <ul>
         <% if session[:user_id] %>
           <% if session[:user_type] == "student" %>
-            <li><a href="/welcome">Home</a></li>
-            <li><a href="/students/<%= session[:user_id] %>">My Profile</a></li>
-            <li><a href="<%= your_lessons_path(current_user) %>">Lessons</a></li>
+            <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/students/#{session[:user_id]}" %></li>
           <% elsif session[:user_type] == "teacher" %>
-            <li><a href="/teacher_welcome">Home</a></li>
-            <li><a href="/teachers/<%= session[:user_id] %>">My Profile</a></li>
+            <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/teachers/#{session[:user_id]}" %></li>
           <% end %>
-          <li><a href="/hobbies">Browse</a></li>
-          <div class = "logo_container">
-          <% if session[:user_id] %>
-            <% if session[:user_type] == "student" %>
-              <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/students/#{session[:user_id]}" %></li>
-            <% elsif session[:user_type] == "teacher" %>
-              <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/teachers/#{session[:user_id]}" %></li>
-            <% end %>
-          <% else %>
-            <li class = "logo"><%= link_to image_tag("brain_icon.png"), login_path %></li>
-          <% end %>
-          </div>
-          <li style = "float:right"><%=link_to "Logout", logout_path, method: :delete %></li>
         <% else %>
-        <li ><%=link_to "Login", login_path, method: :get %></li>
-          <li ><%=link_to "Sign Up", new_student_path, method: :get %></li>
+          <li class = "logo"><%= link_to image_tag("brain_icon.png"), login_path %></li>
+        <% end %>
+
+        <% if session[:user_id] %>
+          <% if session[:user_type] == "student" %>
+            <li class="left"><a href="/welcome">Home</a></li>
+            <li class="left"><a href="/students/<%= session[:user_id] %>">My Profile</a></li>
+            <li class="left"><a href="<%= your_lessons_path(current_user) %>">Lessons</a></li>
+          <% elsif session[:user_type] == "teacher" %>
+            <li class="left"><a href="/teacher_welcome">Home</a></li>
+            <li class="left"><a href="/teachers/<%= session[:user_id] %>">My Profile</a></li>
+          <% end %>
+          <li class="left"><a href="/hobbies">Browse</a></li>
+        <% end %>
+
+        <% if session[:user_id] %>
+          <li class="right"><%=link_to "Logout", logout_path, method: :delete %></li>
+        <% else %>
+          <li class="right"><%=link_to "Login", login_path, method: :get %></li>
+          <li class="right"><%=link_to "Sign Up", new_student_path, method: :get %></li>
         <% end %>
       </ul>
     </nav>

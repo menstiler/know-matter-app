@@ -196,7 +196,11 @@ nav .logo a {
   padding: 0px
 }
 
-nav .logo img {
+.sign-in-out {
+    float:right
+}
+
+.logo img {
   display: inline-block;
   width: 67px;
 }
@@ -263,9 +267,21 @@ nav ul {
 }
 
 nav ul li {
-  float: left;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
+}
+
+nav ul li.left {
+  float: left;
+}
+
+nav ul li.logo {
+  position: absolute;
+  right: 50%;
+}
+
+nav ul li.right{
+  float: right ;
 }
 
 nav ul li a {
@@ -313,13 +329,22 @@ footer a:hover {
 
 .flash {
   border: 1px solid #ebccd1;
-  border-radius: 5px;
   font-family: "Montserrat", sans-serif;
   background: #f2dede;
   padding: 10px;
   color: #a94442;
   margin-bottom: 20px;
-  width:50%
+  width:100 %
+}
+
+.flash-success {
+  border: 1px solid #ebccd1;
+  font-family: "Montserrat", sans-serif;
+  background: #def2e0;
+  padding: 10px;
+  color: #2f8407;
+  margin-bottom: 20px;
+  width:100%
 }
 
 @media only screen and (max-width: 600px) {
@@ -328,5 +353,16 @@ footer a:hover {
   }
   .main-container .form-container, .main-container h1 {
     padding:10px
+  }
+}
+@media only screen and (max-width: 1000px) {
+  nav ul li.logo {
+    position:relative;
+    right:0;
+    top:0;
+  }
+  nav ul li.left, nav ul li.right, nav ul li.logo {
+    float:none;
+    display:block
   }
 }

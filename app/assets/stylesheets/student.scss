@@ -2,18 +2,95 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.profile img {
+.thank-you {
+    font-family:'Montserrat', sans-serif;
+    margin:20px
+}
+
+.thank-you .links {
+    padding-top:30px
+}
+
+img {
   border-radius: 60%;
 }
 
-.profile {
+
+.profile-inner {
   margin: 2%;
+  padding:30px;
+  border: 2px #e9e3e3ad solid;
+  border-radius: 5px;
+  width:50%;
+  font-family:'Montserrat', sans-serif
 }
 
+.reviews {
+  padding:30px;
+  border: 2px #e9e3e3ad solid;
+  border-radius: 5px;
+  width:100%;
+  font-family:'Montserrat', sans-serif
+}
+.reviews ul {
+  display:flex;
+  flex-wrap: wrap
+}
+.reviews ul li img[alt="profile_image"] {
+  float: left;
+  margin-right: 10px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+
+.review-buttons {
+  display: flex;
+  flex-wrap: wrap
+}
+
+.review-buttons form {
+  width: 45%
+}
+.reviews ul li {
+  width: 25%;
+list-style: none;
+background: #efefef;
+margin: 6px;
+padding: 10px;
+border-radius: 10px
+}
+
+.reviews-container {
+  margin:2%;
+}
+
+.image-info  {
+  display:flex;
+  justify-content: space-evenly
+}
+.profile img {
+  width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.profile-buttons {
+  margin:2%;
+  display:flex;
+}
+
+.profile-buttons form {
+  width:10%
+}
+
+.profile-buttons input[type=submit] {
+  width: 120px;
+}
 .info {
-  float: right;
   text-align: left;
-  margin-left: 30%;
+  margin-left:10px
 }
 
 form {
@@ -55,8 +132,67 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-@media only screen and (max-width: 600px) {
-  form, input[type=submit] {
+.lesson-container {
+  display:flex;
+  margin:10px;
+  justify-content: space-evenly
+}
+.lesson-col ul {
+  list-style:none;
+}
+.lesson-col {
+  font-family: "Montserrat", sans-serif;
+  margin: 20px;
+  padding:20px;
+  border: 2px #e9e3e3ad solid;
+  border-radius: 5px;
+  width:100%;
+}
+
+.lesson-col ul li {
+  border-radius: 10px;
+  background: #efefef;
+  padding: 10px;
+  margin: 15px 0px;
+}
+
+@media only screen and (max-width: 1350px) {
+  form, input[type=submit],
+  .reviews ul li,
+  .review-buttons form{
     width: 100%
+  }
+  .lesson-container {
+    flex-direction: column;
+  }
+  .lesson-col {
+    margin:0px;
+    margin-bottom: 20px
+  }
+  .profile-inner {
+    margin:0px;
+    width:100%
+  }
+  .profile {
+    margin: 2%
+  }
+  .reviews {
+    padding:15px;
+  }
+  .profile-container {
+    margin:10px
+  }
+  .square, .info {
+    margin: 0 auto
+  }
+}
+
+@media only screen and (max-width: 1225px) {
+.profile-buttons form,
+.profile-buttons input[type=submit] {
+    width:100%
+  }
+  .profile-buttons {
+    flex-direction:column;
   }
 }

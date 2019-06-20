@@ -2,81 +2,116 @@
 <h1><%= flash[:message] %></h1>
 <% end %>
 
+
 <% if session[:usertype] == "student" %>
 <%= button_to "Back to Browse #{@hobby.subclass}", "/hobbies/#{@hobby.id}", :method => :get %>
 <% end %>
+<div class="outter-container" >
+  <div class="profile-container">
+  <div class="teacher">
+    <div class ="profile">
+    <div class="profile-inner">
+    <h1><%= @teacher.name %>'s Profile Page</h1>
+    <div class="image-info" >
+      <div class="image-container" >
+      <% if @teacher.profile_image.attached? %>
+      <img src="<%=(url_for(@teacher.profile_image))%>" alt="profile_image">
+      <% else %>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
+      <% end %>
+      </div>
+      <div class ="info">
+        <div class="info-dets">
 
-<h1><%= @teacher.name %>'s Profile Page</h1>
+          <h3><%= @teacher.hobby.name %></h3>
+          <h4><%= @teacher.hobby.subclass %></h4>
 
-<% if @teacher.profile_image.attached? %>
-<img src="<%=(url_for(@teacher.profile_image))%>" alt="profile_image">
-<% else %>
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
-<% end %>
+          <h3>Bio:</h3>
+          <%= @teacher.bio %>
+          <h3>Rates:</h3>
+          $<%= @teacher.rates %>/hour
+        </div>
+        <div class="location" >
+          <div class="location-info" >
+        <h3>Location:</h3>
+        <%= @teacher.location %>
+        </div>
+        <div class="location-map" >
+        <iframe width="300" height="250" frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDOUcbahii5R7DYZijNP94JlsGpg0ARcBY&q=<%= @teacher.location %>" allowfullscreen></iframe>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h3><%= @teacher.hobby.name %></h3>
-<h4><%= @teacher.hobby.subclass %></h4>
+  <div class="timeslot-container" >
+  <div class="timeslot" >
+    <% if session[:user_type] == "teacher" && session[:user_id] ==  @teacher.id %>
+      <% unless @timeslots.empty? %>
+        <h3>Your available Timeslots</h3>
+        <% @timeslots.each do |timeslot| %>
+          <% booking = @teacher.bookings.find {|a| a.timeslot.timeslot == timeslot} %>
+            <p><%= timeslot %></p>
+          <%= button_to "Delete", "/bookings/#{booking.id}", method: :delete, data: {confirm: "Are you sure?"} %>
+        <% end %>
+      <% else %>
+        no timeslots
+      <% end %>
+      <%= link_to "Add Timeslot", '/bookings/new' %>
 
-<h3>Bio:</h3>
-<%= @teacher.bio %>
+    <% elsif session[:user_type] == "student" %>
+      <h3>Book Lesson</h3>
 
-<h3>Location:</h3>
-<%= @teacher.location %>
-<iframe width="300" height="250" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDOUcbahii5R7DYZijNP94JlsGpg0ARcBY&q=<%= @teacher.location %>" allowfullscreen></iframe>
-
-<h3>Rates:</h3>
-$<%= @teacher.rates %>/hour
-
-<% if session[:user_type] == "teacher" && session[:user_id] ==  @teacher.id %>
-  <% unless @timeslots.empty? %>
-    <h3>Your available Timeslots</h3>
-    <% @timeslots.each do |timeslot| %>
-      <% booking = @teacher.bookings.find {|a| a.timeslot.timeslot == timeslot} %>
-        <p><%= timeslot %></p>
-      <%= button_to "Delete", "/bookings/#{booking.id}", method: :delete, data: {confirm: "Are you sure?"} %>
+      <% if !@timeslots.empty? %>
+      <%= form_for @lesson do |f| %>
+        <%= f.select :time, @timeslots %>
+        <%= f.hidden_field :location, value: "#{@teacher.location}"%>
+        <%= f.hidden_field :teacher_id, value: "#{@teacher.id}"%>
+        <%= f.hidden_field :student_id, value: "#{@student.id}" %>
+        <%= f.submit "Book" %>
+      <% end %>
+      <% else %>
+        <p>Currently no available bookings</p>
+      <% end %>
     <% end %>
-  <% else %>
-    no timeslots
-  <% end %>
-  <%= link_to "Add Timeslot", '/bookings/new' %>
-<% elsif session[:user_type] == "student" %>
-  <h3>Book Lesson</h3>
 
-  <% if !@timeslots.empty? %>
-  <%= form_for @lesson do |f| %>
-    <%= f.select :time, @timeslots %>
-    <%= f.hidden_field :location, value: "#{@teacher.location}"%>
-    <%= f.hidden_field :teacher_id, value: "#{@teacher.id}"%>
-    <%= f.hidden_field :student_id, value: "#{@student.id}" %>
-    <%= f.submit "Book" %>
-  <% end %>
-  <% else %>
-    <p>Currently no available bookings</p>
-  <% end %>
-<% end %>
+  </div>
+  </div>
+</div>
 
-
+<div class="reviews-container">
+<div class="reviews">
 <h3>Reviews:</h3>
 <% unless @reviews.empty? %>
 <ul>
   <% @reviews.each do |review| %>
     <li>
-      <img src="<%= review.student.profile_image%>" alt=""><br>
+      <% if review.student.profile_image.attached? %>
+        <img src="<%= (url_for(review.student.profile_image))%>" alt="profile_image" style="width: 100px">
+      <% else %>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image" style="width: 100px">
+      <% end %>
       Student: <%= review.student.name %><br>
       Rating: <%= review.rating %><br>
       Content: <%= review.content %><br>
+      <div class="review-buttons">
       <% if session[:user_id] == review.student.id && session[:user_type] == "student" %>
       <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
       <%= button_to "Edit", edit_review_path(review), method: :get %>
       <% end %>
+      </div>
     </li>
   <% end %>
 </ul>
   <% else %>
     <p>No reviews</p>
   <% end %>
+</div>
+</div>
 
+<div class="profile-buttons" >
   <% if session[:user_type] == "teacher" && session[:user_id] ==  @teacher.id %>
   <%= button_to "Edit Profile", "#{teachers_path}/#{@teacher.id}/edit", :method => :get %>
   <%= button_to "Delete Profile", @teacher, method: :delete, data: { confirm: "Are you sure?"} %>
@@ -84,6 +119,7 @@ $<%= @teacher.rates %>/hour
   <% if session[:user_type] == "student" %>
   <%= button_to "Add Review", new_review_path(@teacher), :method => :get %>
   <% end %>
+</div>
 
-
-<%= button_to "Main Page", {:action => "index"}, :method => :get %>
+</div>
+</div>

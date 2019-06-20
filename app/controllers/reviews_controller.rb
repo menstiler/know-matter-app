@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    @review = Review.find(params[:id])
     @review.update(review_params)
     flash[:message] = "Successfully edited review"
     redirect_to(session[:original_uri])

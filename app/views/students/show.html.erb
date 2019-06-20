@@ -1,34 +1,49 @@
 
 <body>
 <% if flash[:message] %>
-<h1><%= flash[:message] %></h1>
+<div class="flash-success">
+<h2><%= flash[:message] %></h2>
+</div>
 <% end %>
 
-<div class ="profile">
-<h1><%= @student.name %></h1>
+<div class="profile-container">
 
+<div class ="profile">
+<div class="profile-inner">
+<h1><%= @student.name %>'s Profile Page</h1>
+<div class="image-info" >
 <% if @student.profile_image.attached? %>
 <div class = "square"><img src="<%=(url_for(@student.profile_image))%>" alt="profile_image"></div>
 <% else %>
 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
 <% end %>
 <div class ="info">
-<p>Name: <%= @student.name %></p>
-<p>Age: <%= @student.age %></p>
-<p>Email: <%= @student.email %></p>
+<h3>Name: <%= @student.name %></h3>
+<h3>Age: <%= @student.age %></h3>
+<h3>Email: <%= @student.email %></h3>
 </div>
+</div>
+</div>
+</div>
+<div class="reviews-container">
 <div class="reviews">
-<p>Reviews: <% unless @reviews.empty? %>
+<h2>Reviews:</h2> <% unless @reviews.empty? %>
   <ul>
    <% @reviews.each do |review| %>
-   <!-- <li> -->
-      <p><img src="<%= review.teacher.profile_image %>" alt="profile_image" style ="width: 100px"></p>
+   <li>
+     <% if review.teacher.profile_image.attached? %>
+       <img src="<%= (url_for(review.teacher.profile_image))%>" alt="profile_image" style="width: 100px">
+     <% else %>
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image" style="width: 100px">
+     <% end %>
       <p><strong>Teacher:</strong> <%= review.teacher.name %></p>
       <p><strong>Content:</strong> <%= review.content %></p>
       <p><strong>Rating:</strong> <%= review.rating %></p>
-      <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
-      <%= button_to "Edit", edit_review_path(review), method: :get %>
-  <!-- </li> -->
+      <div class="review-buttons">
+        <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
+        <%= button_to "Edit", edit_review_path(review), method: :get %>
+      </div>
+  </li>
   <% end %>
   </ul>
   <% else %>
@@ -36,10 +51,13 @@
   <% end %>
 <p>
 </div>
+</div>
 
 <% unless @lessons.empty?  %>
-<strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p>
+<!-- <strong>Most Popular Lesson:</strong> <%= @student.most_popular_hobby %></p> -->
 <% end %>
+
+<div class="profile-buttons" >
 <% unless @lessons.empty? %>
   <%=button_to "Your Lessons", your_lessons_path, method: :get %>
 <% end %>
@@ -49,3 +67,5 @@
 
 
 <%= button_to "Delete Profile", @student, method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
+</div>

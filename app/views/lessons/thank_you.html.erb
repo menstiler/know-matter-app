@@ -1,4 +1,9 @@
 <h1>Thank you for signing up <%= @student.name %>! <br></h1>
+<div class="thank-you">
 <h2>Your booking is waiting for approval by <%= @teacher.name %>!</h2>
+<div class="links">
 <h4><%= link_to "View My Classes", your_lessons_path(@student) %></h4>
+<br>
 <h4><%= link_to "Back to Browse", hobbies_path %></h4>
+</div>
+</div>

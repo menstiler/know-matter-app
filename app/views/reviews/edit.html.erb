@@ -6,7 +6,7 @@
   <%= f.label "Rating: " %>
   <%= f.number_field "rating", max: 5, min: 1 %>
   <%= f.hidden_field :teacher_id, value: "#{@review.teacher.id}"%>
-  <%= f.hidden_field :student_id, value: "#{@review.teacher.id}" %>
+  <%= f.hidden_field :student_id, value: "#{@review.student.id}" %>
   <%= f.submit "Edit Review" %>
 
 <% end %>
