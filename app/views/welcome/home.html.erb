@@ -1,8 +1,10 @@
 
-<header style="padding-left:16px">
-  <h6>Know Matter Where You Are in Your Life</h6>
-  <h1>Welcome <%= @student.name %>!</h1>
-</header>
+<div class="header_container">
+  <header style="padding-left:16px">
+    <h6>Know Matter Where You Are in Your Life</h6>
+    <h1>Welcome <%= @student.name %>!</h1>
+  </header>
+</div>
 
 <div class="banner_container">
 
@@ -10,60 +12,68 @@
 
 <body class ="welcome">
 
+<div class="learn_container">
   <h1>What would you like to learn today?</h1>
+</div>
 
 <div id="hobby_categories">
 
 
-  <div class = "circle"><%= link_to "CREATIVE", "/hobbies/show/Creative" %></div>
-  <div class = "circle"><%= link_to "TECHNICAL", "/hobbies/show/Tech" %></div>
-  <div class = "circle"><%= link_to "LIFESTYLE", "/hobbies/show/Lifestyle" %></div>
+  <div class = "circle" id="creative"><%= link_to "CREATIVE", "/hobbies/show/Creative" %></div>
+  <div class = "circle" id="tech"><%= link_to "TECHNICAL", "/hobbies/show/Tech" %></div>
+  <div class = "circle" id="lifestyle"><%= link_to "LIFESTYLE", "/hobbies/show/Lifestyle" %></div>
 
 </div>
 
 
 <div class="popular">
   <h3>Our most popular classes: </h3>
+</div>
 
+<div class="popular_hobby_container">
   <% @popular_hobbies.each do |hobby| %>
   <div class="card">
-  <ul>
-        <a href="<%=hobby_path(hobby)%>">
-          <% if hobby.image_url.attached? %>
-            <img src="<%= (url_for(hobby.image_url))%>" alt="Hobby Image" style="width:90%"><br></a>
-          <% else %>
-            <% image_show = hobby.default_image %>
-            <img src="<%= image_show%>" alt="Hobby Image" style="width:90%"><br></a>
-          <% end %>
-        <div class ="container">
-        <h4><%= hobby.name %></h4>
-        <p><%= hobby.subclass %></p>
-        </div>
-  </ul>
+    <ul>
+          <a href="<%=hobby_path(hobby)%>">
+            <% if hobby.image_url.attached? %>
+              <img src="<%= (url_for(hobby.image_url))%>" alt="Hobby Image" style="width:90%"><br></a>
+            <% else %>
+              <% image_show = hobby.default_image %>
+              <img src="<%= image_show%>" alt="Hobby Image" style="width:90%"><br></a>
+            <% end %>
+          <div class ="container">
+          <h4><%= hobby.name %></h4>
+          <p><%= hobby.subclass %></p>
+          </div>
+    </ul>
   </div>
   <% end %>
 </div>
 
 <div class="recommendations">
   <h3>Recommendations for you: </h3>
+</div>
+
+<div class="recommendations_container">
 
   <% @hobbies.each do |hobby| %>
-  <div class="card">
-  <ul>
-        <a href="<%=hobby_path(hobby)%>">
-          <% if hobby.image_url.attached? %>
-            <img src="<%= (url_for(hobby.image_url))%>" alt="Hobby Image" style="width:90%"><br></a>
-          <% else %>
-            <% image_show = hobby.default_image %>
-            <img src="<%= image_show%>" alt="Hobby Image" style="width:90%"><br></a>
-          <% end %>
-        <div class ="container">
-        <h4><%= hobby.name %></h4>
-        <p><%= hobby.subclass %></p>
-        </div>
-  </ul>
-  </div>
+    <div class="card">
+      <ul>
+            <a href="<%=hobby_path(hobby)%>">
+              <% if hobby.image_url.attached? %>
+                <img src="<%= (url_for(hobby.image_url))%>" alt="Hobby Image" style="width:90%"><br></a>
+              <% else %>
+                <% image_show = hobby.default_image %>
+                <img src="<%= image_show%>" alt="Hobby Image" style="width:90%"><br></a>
+              <% end %>
+            <div class ="container">
+            <h4><%= hobby.name %></h4>
+            <p><%= hobby.subclass %></p>
+            </div>
+      </ul>
+    </div>
   <% end %>
 </div>
+
 
 </body>

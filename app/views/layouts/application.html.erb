@@ -12,7 +12,7 @@
 
   <body>
     <div class="main-container">
-    <nav>
+    <nav class="nav_container">
       <ul>
         <% if session[:user_id] %>
           <% if session[:user_type] == "student" %>
@@ -23,7 +23,7 @@
         <% else %>
           <li class = "logo"><%= link_to image_tag("brain_icon.png"), login_path %></li>
         <% end %>
-        
+
         <% if session[:user_id] %>
           <% if session[:user_type] == "student" %>
             <li class="left"><a href="/welcome">Home</a></li>
