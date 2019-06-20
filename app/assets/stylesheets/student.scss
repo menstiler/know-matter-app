@@ -42,8 +42,12 @@ img {
   width: 100px;
   height: 100px;
   object-fit: cover;
+  border-radius: 60%
 }
 
+input[type="submit" i]:disabled {
+  background-color:#566156
+}
 
 .review-buttons {
   display: flex;
@@ -74,6 +78,7 @@ border-radius: 10px
   width: 250px;
     height: 250px;
     object-fit: cover;
+    border-radius: 60%
 }
 
 .profile-buttons {
