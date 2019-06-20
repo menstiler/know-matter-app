@@ -1,33 +1,44 @@
-<h1>All Classes for <%= @category %></h1>
 
-<%= form_tag("/hobbies/show/#{@category}", method: :get) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag "Search" %>
-<% end %>
-
-Search by Hobby Name:
-<%= form_tag("/hobbies/show/#{@category}", method: :get) do %>
-  <%= select_tag :search, options_for_select(@hobby_names)%>
-  <%= submit_tag "Search" %>
-<% end %>
-
-<%= button_to "Sort by Popularity", "/hobbies/#{@category}/by_popularity", :method => :get %>
-
-
-<% @hobbies.each do |hobby| %>
-<div class="card">
-<ul>
-      <a href="<%=hobby_path(hobby)%>">
-        <% if hobby.image_url.attached? %>
-          <img src="<%= (url_for(hobby.image_url))%>" alt="Hobby Image" style="width:90%"><br></a>
-        <% else %>
-          <% image_show = hobby.default_image %>
-          <img src="<%= image_show%>" alt="Hobby Image" style="width:90%"><br></a>
-        <% end %>
-      <div class ="container">
-      <h4><%= hobby.name %></h4>
-      <p><%= hobby.subclass %></p>
-      </div>
-</ul>
+<div class="hobby_index_header">
+  <h1>All Classes for <%= @category %></h1>
 </div>
-<% end %>
+
+
+<div class="search_by">
+  <p>Search by Keyword:</p>
+  <%= form_tag("/hobbies/show/#{@category}", method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <p>Search by Hobby Name:</p>
+  <%= form_tag("/hobbies/show/#{@category}", method: :get) do %>
+    <%= select_tag :search, options_for_select(@hobby_names)%>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <div class="hobby_buttons">
+  <%= button_to "Sort by Popularity", "/hobbies/#{@category}/by_popularity", :method => :get %>
+  <%= button_to "Refresh", "/hobbies/show/#{@category}", :method => :get %>
+  </div>
+
+</div>
+
+<div class="hobby_container">
+  <% @hobbies.each do |hobby| %>
+  <div class="card">
+  <ul>
+        <a href="<%=hobby_path(hobby)%>">
+          <% if hobby.image_url.attached? %>
+            <img src="<%= (url_for(hobby.image_url))%>" alt="Hobby Image" style="width:90%"><br></a>
+          <% else %>
+            <% image_show = hobby.default_image %>
+            <img src="<%= image_show%>" alt="Hobby Image" style="width:90%"><br></a>
+          <% end %>
+        <div class ="container">
+        <h4><%= hobby.subclass %></h4>
+        </div>
+  </ul>
+  </div>
+  <% end %>
+</div>
