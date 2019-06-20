@@ -32,6 +32,9 @@ html, body {
  background-color:rgba(255,255,255,0.9);
  background-blend-mode: screen;
 }
+.nav_container {
+  margin-bottom:100px
+}
 
 /* login page styling */
 .login_container {
@@ -269,6 +272,9 @@ nav ul {
   padding: 0;
   overflow: hidden;
   background-color: rgb(30, 0, 237);
+  position:fixed;
+  width:100%;
+  z-index:2
 }
 
 nav ul li {
@@ -350,10 +356,27 @@ footer a:hover {
   padding: 10px;
   color: #2f8407;
   margin-bottom: 20px;
-  width:100%
+  width:100%;
+  font-size:20px  
 }
 
-@media only screen and (max-width: 600px) {
+
+@media only screen and (max-width: 1000px) {
+  nav ul li.logo {
+    position:relative;
+    right:0;
+    top:0;
+  }
+  nav ul {
+    position:relative;
+  }
+  nav ul li.left, nav ul li.right, nav ul li.logo {
+    float:none;
+    display:block
+  }
+}
+
+@media only screen and (max-width: 650px) {
   .login_container {
     flex-direction: column;
     margin:2%;
@@ -368,18 +391,8 @@ footer a:hover {
   nav li.logo, .flash {
     width: 100%
   }
+
   .main-container .form-container, .main-container h1 {
     padding:10px
-  }
-}
-@media only screen and (max-width: 1000px) {
-  nav ul li.logo {
-    position:relative;
-    right:0;
-    top:0;
-  }
-  nav ul li.left, nav ul li.right, nav ul li.logo {
-    float:none;
-    display:block
   }
 }

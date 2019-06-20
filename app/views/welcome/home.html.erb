@@ -5,10 +5,19 @@
     <h1>Welcome <%= @student.name %>!</h1>
   </header>
 </div>
-<!-- 
+<!--
 <div class="banner_container">
 
 </div> -->
+
+<% unless @lesson_message.empty? %>
+  <% @lesson_message.each do |lesson| %>
+    <div class="flash-success message-flex ">
+      <%= lesson.message  %>
+      <%=link_to image_tag("https://img.icons8.com/ios/50/000000/close-window-filled.png", :border=>0), remove_message_path(lesson), method: :post %>
+    </div>
+  <% end %>
+<% end %>
 
 <body class ="welcome">
 
