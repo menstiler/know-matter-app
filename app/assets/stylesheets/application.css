@@ -27,6 +27,10 @@ html, body {
  box-sizing: border-box;
  position: relative;
  min-height: 100%;
+ background: url("https://blog.intercomassets.com/wp-content/uploads/2018/03/02092036/build-a-brand_FINAL_03-%402x-1400x663.jpg");
+ background-size:cover;
+ background-color:rgba(255,255,255,0.9);
+ background-blend-mode: screen;
 }
 
 /* login page styling */
@@ -153,7 +157,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin: 20px;
 }
 
@@ -232,7 +236,8 @@ header h6 {
 
 .banner_container {
   height: 450px;
-  background-image: url("https://blog.intercomassets.com/wp-content/uploads/2018/03/02092036/build-a-brand_FINAL_03-%402x-1400x663.jpg")
+  background-image: url("https://blog.intercomassets.com/wp-content/uploads/2018/03/02092036/build-a-brand_FINAL_03-%402x-1400x663.jpg");
+  background-size:cover;
 }
 
 
@@ -309,6 +314,7 @@ footer {
   padding: 1rem;
   background-color: #efefef;
   text-align: center;
+  font-size: 18px
 }
 
 footer li {
@@ -348,6 +354,17 @@ footer a:hover {
 }
 
 @media only screen and (max-width: 600px) {
+  .login_container {
+    flex-direction: column;
+    margin:2%;
+  }
+  .login_container form {
+    width:100%
+  }
+  .login_container h1 {
+    text-align:center;
+    padding:0px!important;
+  }
   nav li.logo, .flash {
     width: 100%
   }

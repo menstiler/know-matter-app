@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   # custom routes for sessions
   get '/' => "sessions#new", as: "login"
   post '/' => "sessions#create"
-  delete '/logout' => "sessions#destroy", as: "logout"
+  delete '/' => "sessions#destroy", as: "logout"
   get '/teacher_login' => "sessions#new_teacher", as: "teacher_login"
   post '/teacher_login' => "sessions#create_teacher"
 

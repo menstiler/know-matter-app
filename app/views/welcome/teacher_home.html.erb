@@ -6,9 +6,7 @@
   </header>
 </div>
 
-<% if flash[:message] %>
-  <%= flash[:message] %>
-<% end %>
+
 
 <body>
 
@@ -17,6 +15,12 @@
   <div class="your_lessons">
     <h3>Your Lessons</h3>
   </div>
+
+  <% if flash[:message] %>
+    <div class="flash-success">
+      <%= flash[:message] %>
+    </div>
+  <% end %>
 
   <div class="all_my_lessons">
 
