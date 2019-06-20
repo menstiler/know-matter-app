@@ -1,8 +1,13 @@
 <h1>Add New Timeslot</h1>
 
-<% if flash[:message] %>
-  <%= flash[:message] %>
-<% end %>
+<div class="form-container">
+
+  <% if flash[:message] %>
+  <div class="flash">
+    <%= flash[:message] %>
+  </div>
+  <% end %>
+
 
 <%= form_tag('/bookings', method: :post) do %>
   <%= label_tag "Day"%>
@@ -11,3 +16,5 @@
   <%= select_tag :time, options_for_select(@times)%>
   <%= submit_tag "Add New Booking" %>
 <% end %>
+
+</div>

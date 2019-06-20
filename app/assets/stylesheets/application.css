@@ -14,6 +14,32 @@
  *= require_self
  */
 
+*,
+*:before,
+*:after {
+ box-sizing: inherit;
+ margin:0;
+ padding:0;
+}
+
+html, body {
+ height: 100%;
+ box-sizing: border-box;
+ position: relative;
+ min-height: 100%;
+}
+
+.main-container {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 100px; /* height of your footer */
+}
+
+.main-container .form-container, .main-container h1 {
+  padding:20px
+}
 
 nav .logo a {
   padding: 0px
@@ -21,7 +47,7 @@ nav .logo a {
 
 nav .logo img {
   display: inline-block;
-  width: 66px;
+  width: 67px;
 }
 
 header {
@@ -74,7 +100,6 @@ header h6 {
 
 .hobby_categories {
   text-align: center;
-
 }
 
 .recommendations .card {
@@ -94,15 +119,12 @@ header h6 {
 #top_trending {
   display: flex;
 }
-
-
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: rgb(30, 0, 237);
-  height: 70px;
 }
 
 nav ul li {
@@ -111,15 +133,11 @@ nav ul li {
   font-size: 15px;
 }
 
-nav ul li .a {
-  float: right;
-}
-
 nav ul li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 24px 16px;
+  padding: 25px 16px;
   text-decoration: none;
   font-size:18px;
 }
@@ -129,18 +147,45 @@ nav ul li a:hover {
   color:rgb(30, 0, 237);
 }
 
-
 footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: absolute;
+  right: 0;
   bottom: 0;
-  width: 100%;
-  height: 2.5rem;
+  left: 0;
+  width:100%;
+  font-family: 'Montserrat', sans-serif;
+  height:50px;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 
 footer li {
   display: block;
   float: left;
-  padding-left: 10px;
+  padding-left: 20px;
+}
+
+footer a {
+  text-decoration: none
+}
+
+.flash {
+  border: 1px solid #ebccd1;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  background: #f2dede;
+  padding: 10px;
+  color: #a94442;
+  margin-bottom: 20px;
+  width:50%
+}
+
+@media only screen and (max-width: 600px) {
+  nav li.logo, .flash {
+    width: 100%
+  }
+  .main-container .form-container, .main-container h1 {
+    padding:10px
+  }
 }

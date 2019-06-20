@@ -7,9 +7,11 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" type="text/css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
+    <div class="main-container">
     <nav>
       <ul>
         <% if session[:user_id] %>
@@ -40,7 +42,10 @@
       </ul>
     </nav>
 
-    <%= yield %>
+
+      <%= yield %>
+
+
 
     <footer>
       <ul>
@@ -48,5 +53,6 @@
         <li><%=link_to "Become a Teacher", select_hobby_path %></li>
       </ul>
     </footer>
+    </div>
   </body>
 </html>

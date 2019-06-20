@@ -4,18 +4,22 @@
   <% end %>
 <% end %>
 
+<div class="form-container">
+
 <h1>New Student</h1>
 
 <%= form_for @student do |f| %>
-<p><%= f.label :username %><br>
-<%= f.text_field :username %></p>
-<p><%= f.label :name %><br>
-<%= f.text_field :name %></p>
-<p><%= f.label :age %><br>
-<%= f.number_field :age %></p>
-<p><%= f.label :email %><br>
-<%= f.text_field :email %></p>
-<p><%= f.label :profile_image %><br>
-<%= f.file_field :profile_image %></p>
-<p><%= f.submit %></p>
+<%= f.label :username %><br>
+<%= f.text_field :username, class: "form-control" %>
+<%= f.label :name %><br>
+<%= f.text_field :name, class: "form-control" %>
+<%= f.label :age %><br>
+<%= f.number_field :age, class: "form-control" %>
+<%= f.label :email %><br>
+<%= f.text_field :email, class: "form-control" %>
+<%= f.label :profile_image %><br>
+<%= f.file_field :profile_image, class: "file-field" %>
+<%= f.submit "Submit", class: "btn btn-success" %>
 <% end %>
+
+</div>

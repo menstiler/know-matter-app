@@ -1,5 +1,7 @@
 <h1>Edit Student</h1>
 
+<div class="form-container">
+
 <%= form_for @student do |f| %>
 <p><%= f.label :username %><br>
 <%= f.text_field :username %></p>
@@ -13,3 +15,5 @@
 <%= f.file_field :profile_image %></p>
 <p><%= f.submit %></p>
 <% end %>
+
+</div>

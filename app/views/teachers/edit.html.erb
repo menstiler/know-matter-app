@@ -1,5 +1,7 @@
+
 <h1>Edit Teacher</h1>
 
+<div class="form-container">
 <%= form_for @teacher do |f| %>
   <%= f.label "Username: " %>
   <%= f.text_field "username" %>
@@ -19,3 +21,5 @@
   <%= f.collection_select(:hobby_id, @hobbies, :id, :subclass, prompt: "Select Hobby" ) %>
   <%= f.submit %>
 <% end %>
+
+</div>

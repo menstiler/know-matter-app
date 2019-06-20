@@ -6,6 +6,7 @@
 
 
 <h1>Create New Teacher</h1>
+<div class="form-container">
 
 <%= form_for @teacher do |f| %>
 <%= f.label "Username: " %>
@@ -25,3 +26,5 @@
   <%= f.hidden_field :hobby_id, value: "#{@hobby.id}" %>
   <%= f.submit "Complete Submission" %>
 <% end %>
+
+</div>

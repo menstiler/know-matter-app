@@ -6,6 +6,8 @@
 
 <h1>Create New Hobby</h1>
 
+<div class="form-container">
+
 <%= form_tag "/teachers/create_profile", :method => :post, multipart: true do |f| %>
   <%= label_tag "Category: " %>
   <%= select_tag "hobby[category]", options_for_select(['Creative', 'Tech', 'Lifestyle']) %>
@@ -20,3 +22,5 @@
   <br>
   <%= submit_tag "Next" %>
 <% end %>
+
+</div>
