@@ -1,7 +1,10 @@
 <% if flash[:message] %>
+<div class="flash">
+
   <% flash[:message].each do |message| %>
     <%= message %><br>
   <% end %>
+</div>
 <% end %>
 
 

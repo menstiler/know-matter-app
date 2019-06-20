@@ -1,12 +1,14 @@
 <% if flash[:message] %>
+<div class="flash">
   <% flash[:message].each do |message|%>
     <%= message %><br>
   <% end %>
+</div>
 <% end %>
 
-<div class="form-container">
 
 <h1>New Student</h1>
+<div class="form-container">
 
 <%= form_for @student do |f| %>
 <%= f.label :username %><br>
