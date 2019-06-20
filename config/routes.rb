@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   get '/teacher_login' => "sessions#new_teacher", as: "teacher_login"
   post '/teacher_login' => "sessions#create_teacher"
 
+  post '/lessons/:id/remove_message' => "lessons#remove_message", as: "remove_message"
+  post '/lessons/:id/teacher_remove_message' => "lessons#teacher_remove_message", as: "teacher_remove_message"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -8,6 +8,7 @@ class WelcomeController < ApplicationController
       @hobbies = @student.randomize_recommendation
     end
     @popular_hobbies = Hobby.top_three
+    @lesson_message = @student.lessons.select {|lesson| lesson.message != nil && lesson.request == false}
   end
 
   def teacher_home
@@ -20,6 +21,6 @@ class WelcomeController < ApplicationController
 
     @active_lessons = @teacher.lessons.select {|lesson| lesson.active == true}
     @waiting_for_approval = @teacher.lessons.select {|lesson| lesson.active == false && lesson.request == true }
-
+    @lesson_message = @teacher.lessons.select {|lesson| lesson.message != nil && lesson.request == true}
   end
 end

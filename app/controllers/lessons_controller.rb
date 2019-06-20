@@ -5,6 +5,7 @@ class LessonsController < ApplicationController
     booking = @lesson.teacher.bookings.find {|booking| booking.timeslot.timeslot == @lesson.time }
     booking.update(status: false)
     @lesson.update(request: false)
+    @lesson.update(message: "#{@lesson.teacher.hobby.subclass} lesson has been approved by #{@lesson.teacher.name}")
     @lesson.update(active: true)
     flash[:message] = "Lesson has been booked"
     redirect_to(session[:original_uri])
@@ -14,7 +15,20 @@ class LessonsController < ApplicationController
     @lesson = Lesson.create(lesson_params)
     @lesson.update(request: true)
     @lesson.update(active: false)
+    @lesson.update(message: "#{@lesson.student.name} booking is waiting approval")
     redirect_to thank_you_path
+  end
+
+  def remove_message
+    @lesson = Lesson.find(params[:id])
+    @lesson.update(message: nil)
+    redirect_to welcome_path
+  end
+
+  def teacher_remove_message
+    @lesson = Lesson.find(params[:id])
+    @lesson.update(message: nil)
+    redirect_to teacher_welcome_path
   end
 
   def thank_you
@@ -25,6 +39,7 @@ class LessonsController < ApplicationController
   def request_cancel
     @lesson = Lesson.find(params[:id])
     @lesson.update(request: true)
+    @lesson.update(message: "#{@lesson.student.name} cancelation is waiting approval")
     redirect_to(your_lessons_path(session[:user_id]))
   end
 
@@ -34,6 +49,7 @@ class LessonsController < ApplicationController
     booking = @lesson.teacher.bookings.find {|booking| booking.timeslot.timeslot == @lesson.time }
     booking.update(status: true)
     @lesson.update(active: false)
+    @lesson.update(message: "#{@lesson.teacher.hobby.subclass} lesson has been canceled by #{@lesson.teacher.name}")
     @lesson.update(request: false)
     flash[:message] = "Successfully canceled lesson"
     redirect_to(session[:original_uri])

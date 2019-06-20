@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_155813) do
+ActiveRecord::Schema.define(version: 2019_06_20_195732) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_06_19_155813) do
     t.datetime "updated_at", null: false
     t.boolean "request"
     t.boolean "active"
+    t.string "message"
     t.index ["student_id"], name: "index_lessons_on_student_id"
     t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end

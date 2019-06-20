@@ -15,6 +15,15 @@
 //   border-radius: 60%;
 // }
 
+.message-flex {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.message-flex img {
+  width: 60%
+}
 
 .profile-inner {
   margin: 2%;
