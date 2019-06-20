@@ -15,5 +15,60 @@
 }
 
 .container {
-  padding: 2px 16px;
+  padding: 15px;
+}
+
+.container h4 {
+  padding: 5px;
+  font-size: 25px;
+}
+
+.container p {
+  padding: 5px;
+  display: block;
+  background-color: #ffd2bf;
+  color: white;
+}
+
+.card ul {
+  padding: 20px;
+}
+
+.hobby_index_header {
+  display: flex;
+  justify-content: center;
+  background-image: url("https://blog.intercomassets.com/wp-content/uploads/2018/03/02092036/build-a-brand_FINAL_03-%402x-1400x663.jpg");
+  height: 100px;
+}
+
+.hobby_index_header h1 {
+  font-size: 40px;
+}
+
+.search_by {
+  display: flex;
+  flex-direction: row;
+  margin: 40px;
+  justify-content: space-around;
+  margin-left: 10px;
+}
+
+.search_by p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+
+.search_by form {
+  width: 25%;
+}
+
+.hobby_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.hobby_buttons {
+  display: box;
 }

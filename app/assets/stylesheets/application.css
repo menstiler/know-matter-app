@@ -29,6 +29,157 @@ html, body {
  min-height: 100%;
 }
 
+/* login page styling */
+.login_container {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+
+/* student home page styling */
+.header_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 3%;
+}
+
+.learn_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 7%;
+  background-color: lightblue;
+  opacity: 0.7;
+}
+
+#hobby_categories {
+  display: flex;
+  justify-content: space-around;
+  padding: 5%;
+}
+
+#hobby_categories .circle {
+  width: 300px;
+  height: 300px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center
+}
+
+#creative {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/568d61352399a30df6251902/1555951873209-NRGG9Z6J5N3O20KFKOES/ke17ZwdGBToddI8pDm48kFD1qf4wtqw0I1A81gKfzH8UqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2du3rAD5LcfsBvgFQxbBKtpqODQXBkp5rL0ET8zfMWb4LCjLISwBs8eEdxAxTptZAUg/culture_seeker.gif?format=1500w);
+  background-size: 520px;
+  background-position: center;
+}
+
+#tech {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/568d61352399a30df6251902/1555951874345-6MFQ0WQ3WXTM9DKK6PZC/ke17ZwdGBToddI8pDm48kFD1qf4wtqw0I1A81gKfzH8UqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2du3rAD5LcfsBvgFQxbBKtpqODQXBkp5rL0ET8zfMWb4LCjLISwBs8eEdxAxTptZAUg/learner.gif?format=1500w);
+  background-position: center;
+  background-size: 520px;
+}
+
+#lifestyle {
+  background-image: url(https://images.squarespace-cdn.com/content/v1/568d61352399a30df6251902/1555951874736-DE60EM2CA22P5WNN4CJP/ke17ZwdGBToddI8pDm48kFD1qf4wtqw0I1A81gKfzH8UqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2du3rAD5LcfsBvgFQxbBKtpqODQXBkp5rL0ET8zfMWb4LCjLISwBs8eEdxAxTptZAUg/lush.gif?format=1500w);
+  background-position: center;
+  background-size: 550px;
+}
+
+#hobby_categories a {
+  color: white;
+  display: block;
+  background: darkblue;
+  padding: 5px;
+}
+
+.popular, .recommendations, .recent  {
+  display: flex;
+  justify-content: center;
+  padding: 3%;
+  background-color: darkblue;
+  color: white;
+  opacity: 0.7;
+}
+
+.popular_hobby_container, .recommendations_container, .recent_container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* teacher home page styling */
+
+.teacher_lesson_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.your_lessons {
+  display: flex;
+  width: 100%;
+  justify-content: baseline;
+  margin: 0;
+  background-color: lightblue;
+  opacity: 0.8;
+}
+
+.your_lessons h3 {
+  margin: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 23px;
+}
+
+.lessons_title {
+  display: -webkit-box;
+  padding: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  background-color: darkblue;
+  color: white;
+  margin: 18px;
+}
+
+.show_hobbies_to_teacher h3 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.teacher_pending_lessons, .teacher_active_lessons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.teacher_active_lessons {
+  display: flex;
+}
+
+.all_my_lessons {
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.all_my_lessons li {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.circle {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+}
+
+
 .main-container {
   min-height: 100vh; /* will cover the 100% of viewport */
   overflow: hidden;
@@ -65,20 +216,9 @@ header h1 {
 header h6 {
   color: darkgrey;
   font-weight: bold;
+  text-align: center;
 }
 
-#hobby_categories {
-  display: flex;
-  justify-content: space-around;
-}
-
-#hobby_categories .circle {
-  width: 250px;
-  height: 250px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
 
 .welcome {
   font-size: 20px;
@@ -91,12 +231,6 @@ header h6 {
   background-image: url("https://blog.intercomassets.com/wp-content/uploads/2018/03/02092036/build-a-brand_FINAL_03-%402x-1400x663.jpg")
 }
 
-.circle {
-  width: 100px;
-  height: 100px;
-  background: lightblue;
-  border-radius: 50%;
-}
 
 .hobby_categories {
   text-align: center;
@@ -119,6 +253,7 @@ header h6 {
 #top_trending {
   display: flex;
 }
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -167,7 +302,13 @@ footer li {
 }
 
 footer a {
+  display: block;
   text-decoration: none
+}
+
+footer a:hover {
+  background-color: lightblue;
+  color:rgb(30, 0, 237);
 }
 
 .flash {

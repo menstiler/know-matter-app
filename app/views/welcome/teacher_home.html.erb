@@ -1,6 +1,10 @@
-<header style="padding-left:16px">
-  <h1>Welcome <%= @teacher.name %>!</h1>
-</header>
+
+<div class="header_container">
+  <header style="padding-left:16px">
+    <h6>Know Matter Where You Are in Your Life</h6>
+    <h1>Welcome <%= @teacher.name %>!</h1>
+  </header>
+</div>
 
 <% if flash[:message] %>
   <%= flash[:message] %>
@@ -8,45 +12,69 @@
 
 <body>
 
-  <h3>Your Lessons</h3>
-  <% unless @waiting_for_approval.empty? %>
-    <h4>Lessons waiting for approval</h4>
-    <ul>
-  <% @waiting_for_approval.each do |lesson| %>
-    <li>
-      <%= lesson.student.name %>
-      <%= lesson.time %>
-      <%= button_to "Confirm Booking", new_lesson_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
-      <%= button_to "Cancel Booking", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
-    </li>
-  <% end %>
-  </ul>
-  <% end %>
+<div class="teacher_lesson_container">
 
+  <div class="your_lessons">
+    <h3>Your Lessons</h3>
+  </div>
 
-  <% unless @active_lessons.empty? %>
-    <h4>Active Lessons</h4>
-    <ul>
-  <% @active_lessons.each do |lesson| %>
-    <li>
-      <%= lesson.student.name %>
-      <%= lesson.time %>
-      <% if lesson.request == true && lesson.active == true%>
-        <%= button_to "Confirm Cancelation", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
-      <% elsif lesson.request == true && lesson.active == false %>
-      <%= button_to "Confirm Booking", new_lesson_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
-      <% else %>
-      <%= button_to "Cancel", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+  <div class="all_my_lessons">
+
+    <div class = "teacher_pending_lessons">
+      <% unless @waiting_for_approval.empty? %>
+        <div class="lessons_title">
+          <h4>Lessons waiting for approval</h4>
+        </div>
+        <ul>
+      <% @waiting_for_approval.each do |lesson| %>
+        <li>
+          <ul>
+            <li>Student Name: <%= lesson.student.name %></li>
+            <li>Requested Time: <%= lesson.time %></li>
+          </ul>
+          <%= button_to "Confirm Booking", new_lesson_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
+          <%= button_to "Cancel Booking", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+        </li>
       <% end %>
-    </li>
-  <% end %>
-  </ul>
-  <% end %>
+      </ul>
+      <% end %>
+    </div>
 
+    <div class = "teacher_active_lessons">
+      <% unless @active_lessons.empty? %>
+        <div class="lessons_title">
+          <h4>Active Lessons</h4>
+        </div>
+        <ul>
+      <% @active_lessons.each do |lesson| %>
+        <li>
+          <ul>
+            <li>Student :<%= lesson.student.name %></li>
+            <li>Time: <%= lesson.time %></li>
+          </ul>
+          <% if lesson.request == true && lesson.active == true%>
+            <%= button_to "Confirm Cancelation", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+          <% elsif lesson.request == true && lesson.active == false %>
+          <%= button_to "Confirm Booking", new_lesson_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
+          <% else %>
+          <%= button_to "Cancel", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+      <% end %>
+    </div>
 
-  <div id="top_trending">
+  </div>
+</div>
+
+<div class = "show_hobbies_to_teacher">
+
+  <div class="popular">
     <h3>Our most popular classes: </h3>
+  </div>
 
+  <div class="popular_hobby_container">
     <% @popular_hobbies.each do |hobby| %>
     <div class="card">
     <ul>
@@ -66,8 +94,11 @@
     <% end %>
   </div>
 
-  <div id="recent">
+  <div class="recent">
     <h3>Recently Added: </h3>
+  </div>
+
+  <div class="recent_container">
 
     <% @recent_hobbies.each do |hobby| %>
     <div class="card">
@@ -88,5 +119,6 @@
     <% end %>
   </div>
 
+</div>
 
 </body>
