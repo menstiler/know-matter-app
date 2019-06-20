@@ -13,14 +13,19 @@
     <nav>
       <ul>
         <% if session[:user_id] %>
-          <li class = "logo"><%= link_to image_tag("brain_icon.png"), "#{session[:user_id]}" %></li>
+          <% if session[:user_type] == "student" %>
+            <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/students/#{session[:user_id]}" %></li>
+          <% elsif session[:user_type] == "teacher" %>
+            <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/teachers/#{session[:user_id]}" %></li>
+          <% end %>
         <% else %>
-          <li ><%=link_to "Login", login_path, method: :get %></li>
+          <li class = "logo"><%= link_to image_tag("brain_icon.png"), login_path %></li>
         <% end %>
         <% if session[:user_id] %>
           <% if session[:user_type] == "student" %>
             <li><a href="/welcome">Home</a></li>
             <li><a href="/students/<%= session[:user_id] %>">My Profile</a></li>
+            <li><a href="<%= your_lessons_path(current_user) %>">Lessons</a></li>
           <% elsif session[:user_type] == "teacher" %>
             <li><a href="/teacher_welcome">Home</a></li>
             <li><a href="/teachers/<%= session[:user_id] %>">My Profile</a></li>

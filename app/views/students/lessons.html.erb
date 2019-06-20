@@ -25,7 +25,7 @@
 <li>
    <p><strong>Lesson:</strong> <%= lesson.teacher.hobby.subclass %></p>
    <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p>
-   <p><strong>Location:</strong>  <%= lesson.location %></p>
+   <p><strong>Location:</strong>  <%=link_to lesson.location, "https://www.google.com/maps/place?key=AIzaSyDOUcbahii5R7DYZijNP94JlsGpg0ARcBY&q=#{lesson.location}" %></p>
    <p><strong>Time:</strong>  <%= lesson.time %></p>
    <% if lesson.request == false %>
     <%= button_to "Request Cancelation", request_cancel_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
