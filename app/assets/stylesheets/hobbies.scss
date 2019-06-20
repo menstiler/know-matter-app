@@ -15,6 +15,11 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.card img {
+  border-radius: 3%;
+  width: 100% !important;
+}
+
 .container {
   padding: 15px;
 }
@@ -22,14 +27,20 @@
 .container h4 {
   padding: 5px;
   font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
 }
 
-.container p {
-  padding: 5px;
-  display: block;
-  background-color: #ffd2bf;
-  color: white;
-}
+
+
+// .container p {
+//   padding: 5px;
+//   display: block;
+//   background-color: #f9d6d6;
+//   color: white;
+//   text-align: center;
+//   font-family: 'Montserrat', sans-serif;
+// }
 
 .card ul {
   padding: 20px;
@@ -66,10 +77,57 @@
 .hobby_container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 50px;
 }
 
 .hobby_buttons {
   display: box;
+}
+
+.back_to_browse {
+  display: flex;
+  width: 170%;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.hobby_buttons_show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.search_by_show {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+.create_new_hobby_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.search_button {
+  margin-top: 10px;
+}
+
+.hobby_search_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 10px;
+}
+
+.create_hobby_title {
+  font-family: 'Montserrat', sans-serif;
 }

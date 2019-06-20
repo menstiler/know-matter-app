@@ -11,9 +11,9 @@
     padding-top:30px
 }
 
-img {
-  border-radius: 60%;
-}
+// img {
+//   border-radius: 60%;
+// }
 
 
 .profile-inner {
@@ -45,6 +45,14 @@ img {
   height: 100px;
   object-fit: cover;
   border-radius: 60%
+}
+
+.average_rating_profile {
+  display: box;
+  margin: 10px;
+  font-size: 15px;
+  width: 12%;
+  background-color: #ffe4e4;
 }
 
 input[type="submit" i]:disabled {

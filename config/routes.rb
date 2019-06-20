@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
   post '/lessons/:id/request_cancel' => "lessons#request_cancel", as: "request_cancel"
   delete '/students/:id/lessons' => "students#clear_lessons", as: "clear_lessons"
+
+  #custom routes for hobbies
   get '/hobbies/show/:name' => "hobbies#show_by_category"
   get '/hobbies/sort_by_popularity' => "hobbies#sort_by_popularity"
   get '/hobbies/:name/by_popularity' => "hobbies#category_sort_by_popularity"

@@ -1,35 +1,47 @@
-<h1><%= @hobby.subclass %></h1>
+<div class="hobby_index_header">
+  <h1><%= @hobby.subclass %></h1>
+</div>
 
-<%= button_to "Go Back to Browse", {:action => "index"}, :method => :get %>
+<div class="back_to_browse">
+  <%= button_to "Go Back to Browse", {:action => "index"}, :method => :get %>
+</div>
 
-Search by Name:
+<div class="search_by_show">
+Search Teacher by Name:
 <%= form_tag("/hobbies/show", method: :get) do %>
   <%= text_field_tag :search %>
   <%= hidden_field_tag :subclass, value: @hobby.subclass %>
   <%= submit_tag "Search" %>
 <% end %>
 
+<div class="hobby_buttons_show">
 <%= button_to "Sort by Rating", "/hobbies/#{@hobby.subclass}/sort_by_rating", :method => :get %>
 <%= button_to "Sort by Price", "/hobbies/#{@hobby.subclass}/sort_by_rates", :method => :get %>
-
-
 <%= button_to "Refresh", "/hobbies/#{@hobby.id}", :method => :get %>
-
-<% @teachers.each do |teacher| %>
-<div class="card">
-<ul>
-      <a href="<%=teacher_path(teacher)%>">
-        <% if teacher.profile_image.attached? %>
-        <img src="<%=(url_for(teacher.profile_image))%>" alt="profile_image">
-        <% else %>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
-        <% end %>
-      </a>
-      <div class ="container">
-      <h4><%= teacher.name %></h4>
-      <p><%= teacher.title %> </p>
-      <p>$<%= teacher.rates %>/hour</p>
-      </div>
-</ul>
 </div>
+
+</div>
+
+<div class="teacher_container">
+<% if !@teachers.empty? %>
+  <% @teachers.each do |teacher| %>
+  <div class="teacher_card">
+      <ul>
+            <a href="<%=teacher_path(teacher)%>">
+              <% if teacher.profile_image.attached? %>
+              <img src="<%=(url_for(teacher.profile_image))%>" alt="profile_image">
+              <% else %>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
+              <% end %>
+            </a>
+            <h1><%= teacher.name %></h1>
+            <p class ="title"><%= teacher.title %> </p>
+            <p>$<%= teacher.rates %>/hour</p>
+            <p class = "average_rating">Avg Rating: <b><%= teacher.avg_rating %></b></p>
+      </ul>
+  </div>
+  <% end %>
+<% else %>
+  <h3 class = "no_teachers">Currently No Teachers Teach this Hobby</h3>
 <% end %>
+</div>

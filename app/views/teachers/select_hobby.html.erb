@@ -1,13 +1,23 @@
+<div class="hobby_index_header">
 <h1>What is your Hobby?</h1>
+</div>
 
+<div class="create_new_hobby_container">
 
-<%= link_to "Create New Hobby", '/hobbies/new' %><br>
+<p class = "create_hobby_title">Create a New Hobby if you can't find below!</p>
+  <div class="search_button">
+    <%= button_to "Create New Hobby", '/hobbies/new', :method => :get %><br>
+  </div>
+</div>
 
-<%= form_tag("/select_hobby", method: :get) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag "Search" %>
-<% end %>
+<div class="hobby_search_bar">
+  <%= form_tag("/select_hobby", method: :get) do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div> 
 
+<div class="hobby_container">
 <% @hobbies.each do |hobby| %>
 <div class="card">
 <ul>
@@ -19,9 +29,9 @@
           <img src="<%= image_show %>" alt="Hobby Image" style="width:90%"><br></a>
         <% end %>
       <div class ="container">
-      <h4><%= hobby.name %></h4>
-      <p><%= hobby.subclass %></p>
+      <h4><%= hobby.subclass %></h4>
       </div>
 </ul>
 </div>
 <% end %>
+</div>

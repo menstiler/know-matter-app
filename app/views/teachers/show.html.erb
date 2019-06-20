@@ -85,6 +85,7 @@
 <div class="reviews">
 <h3>Reviews:</h3>
 <% unless @reviews.empty? %>
+<p class = "average_rating_profile">Average Rating: <%= @teacher.avg_rating %> </p>
 <ul>
   <% @reviews.each do |review| %>
     <li>
