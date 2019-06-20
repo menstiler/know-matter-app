@@ -15,9 +15,9 @@
     <div class="image-info" >
       <div class="image-container" >
       <% if @teacher.profile_image.attached? %>
-      <img src="<%=(url_for(@teacher.profile_image))%>" alt="profile_image">
+        <img src="<%=(url_for(@teacher.profile_image))%>" alt="profile_image">
       <% else %>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image">
       <% end %>
       </div>
       <div class ="info">

@@ -22,7 +22,8 @@ img {
   border: 2px #e9e3e3ad solid;
   border-radius: 5px;
   width:50%;
-  font-family:'Montserrat', sans-serif
+  font-family:'Montserrat', sans-serif;
+  background:white;
 }
 
 .reviews {
@@ -30,7 +31,8 @@ img {
   border: 2px #e9e3e3ad solid;
   border-radius: 5px;
   width:100%;
-  font-family:'Montserrat', sans-serif
+  font-family:'Montserrat', sans-serif;
+  background:white;
 }
 .reviews ul {
   display:flex;
@@ -152,6 +154,7 @@ input[type=submit]:hover {
   border: 2px #e9e3e3ad solid;
   border-radius: 5px;
   width:100%;
+  background:white;
 }
 
 .lesson-col ul li {
@@ -162,7 +165,6 @@ input[type=submit]:hover {
 }
 
 @media only screen and (max-width: 1350px) {
-  form, input[type=submit],
   .reviews ul li,
   .review-buttons form{
     width: 100%
@@ -200,4 +202,9 @@ input[type=submit]:hover {
   .profile-buttons {
     flex-direction:column;
   }
+}
+@media only screen and (max-width: 850px) {
+form input[type=submit] {
+  width:100%
+}
 }
