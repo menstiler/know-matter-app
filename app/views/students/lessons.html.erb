@@ -22,6 +22,7 @@
    <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p><br>
    <p><strong>Location:</strong>  <%= lesson.location %></p><br>
    <p><strong>Time:</strong>  <%= lesson.time %></p><br>
+   <%= button_to "Cancel Booking", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
    <%= button_to "Book another lesson with #{lesson.teacher.name}", teacher_path(lesson.teacher.id), method: :get %>
    <%= button_to "Book another #{lesson.teacher.hobby.name} lesson", hobby_path(lesson.teacher.hobby.id), method: :get %>
    <% if index > 1 %>

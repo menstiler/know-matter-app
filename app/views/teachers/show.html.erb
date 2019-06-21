@@ -1,5 +1,7 @@
 <% if flash[:message] %>
-<h1><%= flash[:message] %></h1>
+<div class="flash">
+<h2><%= flash[:message] %></h2>
+</div>
 <% end %>
 
 
@@ -38,7 +40,7 @@
         </div>
         <div class="location-map" >
         <iframe width="300" height="250" frameborder="0" style="border:0"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDOUcbahii5R7DYZijNP94JlsGpg0ARcBY&q=<%= @teacher.location %>" allowfullscreen></iframe>
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDOUcbahii5R7DYZijNP94JlsGpg0ARcBY&q=<canvas id="canvas" width="300" height="300"></canvas>" allowfullscreen></iframe>
         </div>
         </div>
         </div>

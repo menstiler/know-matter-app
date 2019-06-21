@@ -11,6 +11,7 @@ class TeachersController < ApplicationController
     session[:original_uri] = request.url
     if session[:user_type] == "student"
       @student = Student.find(session[:user_id])
+      @unavailable_times = @student.my_timeslots
       @lesson = Lesson.new(teacher_id: @teacher.id, student_id: @student.id)
       @hobby = @teacher.hobby
     end
