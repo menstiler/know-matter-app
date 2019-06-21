@@ -49,4 +49,14 @@ class Student < ApplicationRecord
     self.all.max_by {|student| student.lessons.count}
   end
 
+  def my_timeslots
+    if !self.lessons.empty?
+      self.lessons.map do |lesson|
+        if lesson.request == true
+          lesson.time
+        end
+      end
+    end
+  end
+
 end

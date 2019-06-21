@@ -82,10 +82,15 @@ input[type="submit" i]:disabled {
 }
 
 .review-buttons form {
-  width: 45%
+  width: auto
 }
+
+.review-buttons form:nth-child(2) {
+  padding-left:10px
+}
+
 .reviews ul li {
-  width: 25%;
+  width: 32%;
 list-style: none;
 background: #efefef;
 margin: 6px;
@@ -226,6 +231,9 @@ input[type=submit]:hover {
   }
   .profile-buttons {
     flex-direction:column;
+  }
+  .review-buttons form:nth-child(2) {
+    padding-left:0px
   }
 }
 @media only screen and (max-width: 850px) {
