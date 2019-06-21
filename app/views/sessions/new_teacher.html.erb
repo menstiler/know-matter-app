@@ -8,15 +8,19 @@
 <body id="login_page">
 
   <div class="login_container">
+          <div class="profile-inner">
 
     <h1>Teacher Login</h1>
 
     <%= form_tag '/teacher_login' do %>
     <%= label_tag "Username:" %>
     <%= text_field_tag :username %>
+    <%= label_tag "Password:" %>
+    <%= password_field_tag :password %>
     <%= submit_tag "Login" %>
     <% end %>
 
+  </div>
   </div>
 
 </body>

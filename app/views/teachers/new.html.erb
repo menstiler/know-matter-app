@@ -14,6 +14,8 @@
 <%= form_for @teacher do |f| %>
 <%= f.label "Username: " %>
 <%= f.text_field "username" %>
+<%= f.label :password %>
+<%= f.password_field :password %>
   <%= f.label "Name: " %>
   <%= f.text_field "name" %>
   <%= f.label "Title: " %>

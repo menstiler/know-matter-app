@@ -80,7 +80,6 @@ class Hobby < ApplicationRecord
   end
 
   def default_image
-    # byebug
     case self.name
       when "Music"
         "https://c.stocksy.com/a/gOf700/z9/1827430.jpg?1560798036"
@@ -92,5 +91,5 @@ class Hobby < ApplicationRecord
         "https://learnatcentral.org/wp-content/uploads/2016/01/Page-Header-Language-French-300x200.jpg"
     end
   end
-  
+
 end

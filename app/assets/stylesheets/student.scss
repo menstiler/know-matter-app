@@ -138,7 +138,7 @@ label {
   font-family:'Montserrat', sans-serif
 }
 
-input[type=text],input[type=number],input[type=file], select, textarea {
+input[type=text],input[type=number],input[type=file], input[type="password" i], select, textarea {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -234,6 +234,10 @@ form input[type=submit], .lesson-col form  {
 }
 .average_rating_profile {
   width: 50%
+}
+
+form {
+  width: 100%
 }
 
 }
