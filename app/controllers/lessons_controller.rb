@@ -20,7 +20,7 @@ class LessonsController < ApplicationController
       @lesson.update(request: true)
       @lesson.update(active: false)
       @lesson.update(message: "#{@lesson.student.name}'s booking is waiting approval")
-      redirect_to thank_you_path
+      redirect_to thank_you_path(@lesson)
     end
   end
 
@@ -37,8 +37,9 @@ class LessonsController < ApplicationController
   end
 
   def thank_you
+    @lesson = Lesson.find(params[:id])
     @student = Student.find(session[:user_id])
-    @teacher = Teacher.find(@student.teachers.last.id)
+    @teacher = Teacher.find(@lesson.teacher.id)
   end
 
   def request_cancel

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post '/lessons' => "lessons#request_new_lesson", as: "request_new_lesson"
   post '/lessons/:id' => "lessons#create_new_lesson", as: "new_lesson"
   get '/lessons' => "lessons#index"
-  get '/thank_you' => "lessons#thank_you", as: "thank_you"
+  get '/thank_you/:id' => "lessons#thank_you", as: "thank_you"
   delete '/lessons/:id' => "lessons#cancel_lesson", as: "cancel_lesson"
   post '/lessons/:id/request_cancel' => "lessons#request_cancel", as: "request_cancel"
   delete '/students/:id/lessons' => "students#clear_lessons", as: "clear_lessons"

@@ -20,6 +20,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
     if @student.valid?
       @student.save
+      UserMailer.welcome_email(@student).deliver_now
       session[:user_id] = @student.id
       session[:user_type] = "student"
       redirect_to welcome_path
