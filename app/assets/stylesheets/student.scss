@@ -15,6 +15,7 @@
 //   border-radius: 60%;
 // }
 
+
 .message-flex {
   display:flex;
   justify-content: center;
@@ -22,7 +23,14 @@
 }
 
 .message-flex img {
-  width: 60%
+  width: 60%;
+  padding-left:10px
+}
+
+.teacher_card img {
+  width:250px;
+  height:250px;
+  object-fit:cover
 }
 
 .profile-inner {
@@ -221,7 +229,11 @@ input[type=submit]:hover {
   }
 }
 @media only screen and (max-width: 850px) {
-form input[type=submit] {
+form input[type=submit], .lesson-col form  {
   width:100%
 }
+.average_rating_profile {
+  width: 50%
+}
+
 }

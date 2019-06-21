@@ -4,6 +4,15 @@
 </div>
 <% end %>
 <div class="lesson-container" >
+<% if @waiting_for_approval.empty? && @active_lessons.empty? && @inactive_lessons.empty? %>
+<div class="lesson-col" >
+<h2>You have no lessons</h2>
+<br>
+<h4>Browse for lessons <a href="/hobbies">here</a></h4>
+</div>
+<% end %>
+
+<div class="lesson-container" >
 <% unless @waiting_for_approval.empty? %>
 <div class="lesson-col" >
 <h2>Lessons waiting for approval</h2>

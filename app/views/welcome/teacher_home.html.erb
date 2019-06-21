@@ -32,7 +32,7 @@
 
   <div class="all_my_lessons">
 
-    <div class = "teacher_pending_lessons">
+    <div class = "teacher_pending_lessons  lesson-col">
       <% unless @waiting_for_approval.empty? %>
         <div class="lessons_title">
           <h4>Lessons waiting for approval</h4>
@@ -52,7 +52,7 @@
       <% end %>
     </div>
 
-    <div class = "teacher_active_lessons">
+    <div class = "teacher_active_lessons  lesson-col">
       <% unless @active_lessons.empty? %>
         <div class="lessons_title">
           <h4>Active Lessons</h4>

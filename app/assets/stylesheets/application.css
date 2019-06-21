@@ -39,10 +39,14 @@ html, body {
 /* login page styling */
 .login_container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
   justify-content: center;
   margin-top: 10%;
+  align-items: center;s
+}
+.login_container form {
+  width: 25%
 }
 
 
@@ -149,6 +153,11 @@ html, body {
   background-color: darkblue;
   color: white;
   margin: 18px;
+  width:100%
+}
+
+.teacher_pending_lessons ul li, .teacher_active_lessons ul li {
+  font-family: 'Montserrat', sans-serif;
 }
 
 .show_hobbies_to_teacher h3 {
@@ -357,7 +366,12 @@ footer a:hover {
   color: #2f8407;
   margin-bottom: 20px;
   width:100%;
-  font-size:20px  
+  font-size:20px
+}
+
+
+.all_my_lessons .lesson-col ul  {
+  width:100%
 }
 
 
@@ -367,6 +381,9 @@ footer a:hover {
     right:0;
     top:0;
   }
+  .nav_container {
+    margin-bottom: 50px
+  }
   nav ul {
     position:relative;
   }
@@ -374,6 +391,25 @@ footer a:hover {
     float:none;
     display:block
   }
+.all_my_lessons  {
+  flex-direction: column;
+  margin: 0px 10px 20px
+}
+ .lessons_title{
+   margin: 18px 0px
+ }
+ .teacher_pending_lessons, .teacher_active_lessons {
+   margin:0px;
+   align-items: center
+ }
+ .teacher_lesson_container,
+ .teacher_pending_lessons ul, .teacher_active_lessons ul {
+   margin:2%
+ }
+ .all_my_lessons div {
+    margin-bottom: 10px;
+}
+
 }
 
 @media only screen and (max-width: 650px) {
