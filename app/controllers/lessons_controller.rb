@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.create(lesson_params)
     @lesson.update(request: true)
     @lesson.update(active: false)
-    @lesson.update(message: "#{@lesson.student.name} booking is waiting approval")
+    @lesson.update(message: "#{@lesson.student.name}'s booking is waiting approval")
     redirect_to thank_you_path
   end
 

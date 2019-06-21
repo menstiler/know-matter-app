@@ -37,7 +37,9 @@ Search Teacher by Name:
             <h1><%= teacher.name %></h1>
             <p class ="title"><%= teacher.title %> </p>
             <p>$<%= teacher.rates %>/hour</p>
+            <% if  teacher.reviews.find {|review| review.rating } %>
             <p class = "average_rating">Avg Rating: <b><%= teacher.avg_rating %></b></p>
+            <% end %>
       </ul>
   </div>
   <% end %>
