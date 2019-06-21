@@ -17,12 +17,12 @@
 
         <% if session[:user_id] %>
           <% if session[:user_type] == "student" %>
-            <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/students/#{session[:user_id]}" %></li>
+            <li class = "logo"><%= link_to image_tag("brain_icon2.png"), "/students/#{session[:user_id]}" %></li>
           <% elsif session[:user_type] == "teacher" %>
-            <li class = "logo"><%= link_to image_tag("brain_icon.png"), "/teachers/#{session[:user_id]}" %></li>
+            <li class = "logo"><%= link_to image_tag("brain_icon2.png"), "/teachers/#{session[:user_id]}" %></li>
           <% end %>
         <% else %>
-          <li class = "logo"><%= link_to image_tag("brain_icon.png"), login_path %></li>
+          <li class = "logo"><%= link_to image_tag("brain_icon2.png"), login_path %></li>
         <% end %>
 
         <% if session[:user_id] %>

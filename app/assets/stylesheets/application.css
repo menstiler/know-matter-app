@@ -209,7 +209,8 @@ html, body {
 }
 
 nav .logo a {
-  padding: 0px
+  padding: 0px;
+  width:140px
 }
 
 .sign-in-out {
@@ -218,7 +219,7 @@ nav .logo a {
 
 .logo img {
   display: inline-block;
-  width: 67px;
+  width: 100%;
 }
 
 header {
@@ -297,7 +298,8 @@ nav ul li.left {
 
 nav ul li.logo {
   position: absolute;
-  right: 50%;
+  right: 45%;
+  left: 45%;
 }
 
 nav ul li.right{
@@ -380,9 +382,14 @@ footer a:hover {
     position:relative;
     right:0;
     top:0;
+    left:0
   }
   .nav_container {
     margin-bottom: 50px
+  }
+  nav .logo a {
+    width:50%;
+    margin:0 auto
   }
   nav ul {
     position:relative;
