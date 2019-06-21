@@ -18,6 +18,8 @@
 .card img {
   border-radius: 3%;
   width: 100% !important;
+  height: 250px;
+  object-fit: cover;
 }
 
 .container {
@@ -29,6 +31,13 @@
   font-size: 25px;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+}
+
+.hobby_container p {
+  text-align: right;
+  font-family: 'Montserrat', sans-serif;
+  color: #040450;
+  font-size: 14px;
 }
 
 

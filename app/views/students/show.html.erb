@@ -36,7 +36,7 @@
      <% else %>
        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUpLmfyUcrCGYWlPbeABQ5-iDAHTkieFkgDJFI6l48lZSKPGhKWQ" alt="profile_image" style="width: 100px">
      <% end %>
-      <p><strong>Teacher:</strong> <%= review.teacher.name %></p>
+      <p><strong>Teacher:</strong> <%= link_to review.teacher.name, teacher_path(review.teacher) %></p>
       <p><strong>Content:</strong> <%= review.content %></p>
       <p><strong>Rating:</strong> <%= review.rating %></p>
       <div class="review-buttons">

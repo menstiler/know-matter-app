@@ -1,0 +1,20 @@
+<h1>Edit Hobby</h1>
+
+<div class="form-container">
+
+<%= form_for @hobby do |f| %>
+  <%= f.label "Category: " %>
+  <%= f.select "category", options_for_select(['Creative', 'Tech', 'Lifestyle']) %>
+  <p><%= f.label "Name: " %></p>
+  <sub>i.e. Music, Art...etc.</sub><br>
+  <%= f.text_field "name" %>
+  <p><%= f.label "Subclass: " %></p>
+  <sub>i.e. Piano, Painting...etc.</sub><br>
+  <%= f.text_field "subclass" %><br>
+  <p><%= f.label "Choose Image: " %></p>
+  <p><%= f.file_field "hobby[image_url]" %></p>
+  <br>
+  <%= f.submit "Update Hobby" %>
+<% end %>
+
+</div>
