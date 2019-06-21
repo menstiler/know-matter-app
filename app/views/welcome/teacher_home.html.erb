@@ -20,10 +20,11 @@
 
 <div class="teacher_lesson_container">
 
+<% unless @waiting_for_approval.empty? && @active_lessons.empty? %>
   <div class="your_lessons">
     <h3>Your Lessons</h3>
   </div>
-
+<% end %>
   <% if flash[:message] %>
     <div class="flash-success">
       <%= flash[:message] %>
@@ -32,8 +33,8 @@
 
   <div class="all_my_lessons">
 
-    <div class = "teacher_pending_lessons  lesson-col">
       <% unless @waiting_for_approval.empty? %>
+      <div class = "teacher_pending_lessons  lesson-col">
         <div class="lessons_title">
           <h4>Lessons waiting for approval</h4>
         </div>
@@ -49,11 +50,11 @@
         </li>
       <% end %>
       </ul>
-      <% end %>
     </div>
+      <% end %>
 
-    <div class = "teacher_active_lessons  lesson-col">
       <% unless @active_lessons.empty? %>
+      <div class = "teacher_active_lessons  lesson-col">
         <div class="lessons_title">
           <h4>Active Lessons</h4>
         </div>
@@ -74,8 +75,8 @@
         </li>
       <% end %>
       </ul>
-      <% end %>
     </div>
+      <% end %>
 
   </div>
 </div>

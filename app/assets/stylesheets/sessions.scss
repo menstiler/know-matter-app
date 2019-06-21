@@ -1,3 +1,34 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#login_page .nav_container {
+  margin-bottom:72px
+}
+
+#login_page .profile-inner {
+  margin: 2%;
+  padding: 30px;
+  border: 2px #e9e3e3ad solid;
+  border-radius: 5px;
+  width: 40%;
+  font-family: 'Montserrat', sans-serif;
+  background: white;
+}
+
+
+#login_page .profile-inner h1 {
+    padding: 0px;
+    padding-bottom: 20px;
+}
+
+
+#login_page .login_container form {
+  width:100%
+}
+
+@media only screen and (max-width: 650px) {
+  #login_page .profile-inner {
+      width:100%
+  }
+}

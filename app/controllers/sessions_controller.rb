@@ -8,13 +8,19 @@ class SessionsController < ApplicationController
     if params[:username].empty?
       render :new
     else
-      if Student.find_by(username: params[:username])
+      user = Student.find_by(username: params[:username])
+      if user
         user = Student.find_by(username: params[:username])
-        session[:user_id] = user.id
-        session[:user_type] = "student"
-        redirect_to welcome_path
+        if user.authenticate(params[:password])
+          session[:user_id] = user.id
+          session[:user_type] = "student"
+          redirect_to welcome_path
+        else
+          flash.now[:message] = "Incorrect password"
+          render :new
+        end
       else
-        flash.now[:message] = "Enter a valid username"
+        flash.now[:message] = "Please enter a valid username"
         render :new
       end
     end
@@ -38,11 +44,17 @@ class SessionsController < ApplicationController
     if params[:username].empty?
       render :new_teacher
     else
-      if Teacher.find_by(username: params[:username])
+      user = Teacher.find_by(username: params[:username])
+      if user
         user = Teacher.find_by(username: params[:username])
-        session[:user_id] = user.id
-        session[:user_type] = "teacher"
-        redirect_to teacher_path(user)
+        if user.authenticate(params[:password])
+          session[:user_id] = user.id
+          session[:user_type] = "teacher"
+          redirect_to teacher_path(user)
+        else
+          flash.now[:message] = "Incorrect password"
+          render :new
+        end
       else
         flash.now[:message] = "Enter a valid username"
         render :new_teacher

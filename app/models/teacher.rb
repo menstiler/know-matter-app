@@ -6,13 +6,14 @@ class Teacher < ApplicationRecord
   has_many :bookings
   has_many :timeslots, through: :bookings
   has_one_attached :profile_image
+  has_secure_password
 
   validates :name, presence: true
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :rates, presence: true
   validates :location, presence: true
-  validates :title, presence: true 
+  validates :title, presence: true
 
 
   # returns teachers based on hobby name passed in as argument
@@ -67,8 +68,12 @@ class Teacher < ApplicationRecord
 
   #returns average rating for a teacher
   def avg_rating
-    ratings = self.reviews.map {|review| review.rating}
-    ratings.inject(0.0) { |sum, el| sum + el } / ratings.size
+    unless self.reviews.empty?
+      ratings = self.reviews.map {|review| review.rating}
+      ratings.inject(0.0) { |sum, el| sum + el } / ratings.size
+    else
+      0
+    end
   end
 
   # return number of students signed up to a teacher's class

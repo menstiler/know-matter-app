@@ -3,6 +3,7 @@ class Student < ApplicationRecord
   has_many :lessons, dependent: :delete_all
   has_many :teachers, through: :lessons
   has_one_attached :profile_image
+  has_secure_password
 
   validates :name, presence: true
   validates :username, presence: true
