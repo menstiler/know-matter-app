@@ -22,7 +22,7 @@ Know Matter is a double authentication application, meaning a user can sign in e
 3. Analytical component to the application (write some interesting ActiveRecord queries) 
 4. No JavaScript. Stay focused on Rails for this project. 
 
-Time allocated: 5 days 
+**Time allocated: 5 days**
 
 ## MODEL FLOW CHART
 
