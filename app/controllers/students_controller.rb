@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :lessons, :clear_lessons]
-  before_action :student_authorized, only: [:show, :edit, :lessons, :index]
+  before_action :student_authorized, only: [:edit, :lessons, :index]
+  before_action :authorized, only: [:show]
 
   def index
     @students = Student.all
@@ -20,6 +21,7 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
     if @student.valid?
       @student.save
+      # UserMailer.welcome_email(@student).deliver_now
       session[:user_id] = @student.id
       session[:user_type] = "student"
       redirect_to welcome_path

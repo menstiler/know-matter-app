@@ -19,7 +19,7 @@
 <% @waiting_for_approval.each_with_index do |lesson, index| %>
 <li>
    <p><strong>Lesson:</strong> <%= lesson.teacher.hobby.subclass %></p><br>
-   <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p><br>
+   <p><strong>Teacher:</strong>  <%=link_to lesson.teacher.name, teacher_path(lesson.teacher) %></p><br>
    <p><strong>Location:</strong>  <%= lesson.location %></p><br>
    <p><strong>Time:</strong>  <%= lesson.time %></p><br>
    <%= button_to "Cancel Booking", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>
@@ -40,7 +40,7 @@
 <% @active_lessons.each do |lesson| %>
 <li>
    <p><strong>Lesson:</strong> <%= lesson.teacher.hobby.subclass %></p><br>
-   <p><strong>Teacher:</strong>  <%= lesson.teacher.name %></p><br>
+   <p><strong>Teacher:</strong>  <%=link_to lesson.teacher.name, teacher_path(lesson.teacher) %></p><br>
    <p><strong>Location:</strong>  <%=link_to lesson.location, "https://www.google.com/maps/place?key=AIzaSyDOUcbahii5R7DYZijNP94JlsGpg0ARcBY&q=#{lesson.location}" %></p><br>
    <p><strong>Time:</strong>  <%= lesson.time %></p><br>
    <p><strong>Price:</strong>  $<%= lesson.teacher.rates %></p><br>

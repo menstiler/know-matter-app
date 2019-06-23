@@ -56,6 +56,8 @@ class Student < ApplicationRecord
           lesson.time
         end
       end
+    else
+      []
     end
   end
 
