@@ -40,6 +40,7 @@ days.each do |day|
   end
 end
 
-# Teacher.all.each do |teacher|
-#   Review.create(content: Faker::Movies::HarryPotter.quote , rating: rand(1..5),  student_id: Student.first.id, teacher_id: teacher.id)
-# end
+Teacher.all.each do |teacher|
+  Review.create(content: Faker::Movies::HarryPotter.quote , rating: rand(1..5),  student_id: Student.first.id, teacher_id: teacher.id)
+  Booking.create(timeslot_id: rand(1..Timeslot.all.length), teacher_id: teacher.id,  status: true)
+end

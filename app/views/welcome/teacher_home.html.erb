@@ -42,7 +42,7 @@
       <% @waiting_for_approval.each do |lesson| %>
         <li>
           <ul>
-            <li>Student Name: <%= lesson.student.name %></li>
+            <li>Student Name: <%=link_to lesson.student.name, student_path(lesson.student)%></li>
             <li>Requested Time: <%= lesson.time %></li>
           </ul>
           <%= button_to "Confirm Booking", new_lesson_path(lesson), method: :post, data: {confirm: "Are you sure?"} %>
@@ -62,8 +62,8 @@
       <% @active_lessons.each do |lesson| %>
         <li>
           <ul>
-            <li>Student: <%= lesson.student.name %></li>
-            <li>Time: <%= lesson.time %></li>
+            <p>Student: <%=link_to lesson.student.name, student_path(lesson.student) %></p><br>
+            <p>Time: <%= lesson.time %></p><br>
           </ul>
           <% if lesson.request == true && lesson.active == true%>
             <%= button_to "Confirm Cancelation", cancel_lesson_path(lesson), method: :delete, data: {confirm: "Are you sure?"} %>

@@ -39,10 +39,12 @@
       <p><strong>Teacher:</strong> <%= link_to review.teacher.name, teacher_path(review.teacher) %></p>
       <p><strong>Content:</strong> <%= review.content %></p>
       <p><strong>Rating:</strong> <%= review.rating %></p>
+      <% if current_user.id == @student.id %>
       <div class="review-buttons">
         <%= button_to "Delete", delete_review_path(review), method: :delete, data: {confirm: "Are you sure?"} %>
         <%= button_to "Edit", edit_review_path(review), method: :get %>
       </div>
+      <% end %>
   </li>
   <% end %>
   </ul>
@@ -58,14 +60,14 @@
 <% end %>
 
 <div class="profile-buttons" >
+  <% if current_user.id == @student.id %>
 <% unless @lessons.empty? %>
   <%=button_to "Your Lessons", your_lessons_path, method: :get %>
 <% end %>
 
-
 <%= button_to "Edit Profile", "#{student_path}/edit", method: :get %>
 
-
 <%= button_to "Delete Profile", @student, method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
 </div>
 </div>
