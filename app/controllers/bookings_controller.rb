@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def create
-    timeslot = params[:day] + ": " + params[:time]
+    timeslot = params[:day] + "s: " + params[:time]
     @timeslot = Timeslot.find_by(timeslot: timeslot)
     @teacher = Teacher.find(session[:user_id])
     @booking = Booking.new(teacher_id: @teacher.id, timeslot_id: @timeslot.id, status: true)
