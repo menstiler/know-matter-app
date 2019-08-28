@@ -43,10 +43,11 @@ html, body {
   align-items: baseline;
   justify-content: center;
   margin-top: 10%;
-  align-items: center;s
+  align-items: centers
 }
+
 .login_container form {
-  width: 25%
+  width:25%
 }
 
 
@@ -357,7 +358,7 @@ footer a:hover {
   padding: 10px;
   color: #a94442;
   margin-bottom: 20px;
-  width:100 %
+  width:100%
 }
 
 .flash-success {
